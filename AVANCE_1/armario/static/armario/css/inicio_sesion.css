@@ -1,0 +1,21 @@
+
+/* STYLEMATCH AI - INICIO DE SESION */
+
+.auth-tarjeta {
+  max-width: 420px;
+}
+
+.auth-formulario input {
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.auth-formulario .boton-principal {
+  min-height: 48px;
+}
+
+.auth-formulario .boton-principal:focus-visible {
+  outline: 3px solid #c9a8f3;
+  outline-offset: 3px;
+}

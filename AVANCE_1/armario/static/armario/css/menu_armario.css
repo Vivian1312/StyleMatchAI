@@ -1,0 +1,34 @@
+/* Navegacion funcional para la vista ya existente de Mi armario. */
+.navegacion .nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  color: #392455;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 10px 14px;
+  border-radius: 16px;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.navegacion .nav-link:hover { background: #f6ecff; color: #6632b1; }
+.navegacion .nav-link.nav-activa,
+.navegacion .nav-link.nav-activa:hover { background: #f0e4ff; color: #6035a4; }
+.navegacion .nav-link:focus-visible { outline: 2px solid #7745c9; outline-offset: 3px; }
+.navegacion .nav-link .icono { width: 21px; height: 21px; }
+@media (max-width: 1090px) and (min-width: 641px) {
+  .navegacion { gap: 2px; }
+  .navegacion .nav-link { font-size: 13px; padding: 8px; }
+  .marca { gap: 8px; }
+}
+@media (max-width: 640px) {
+  .barra { height: auto; min-height: 62px; flex-wrap: wrap; padding-top: 8px; padding-bottom: 8px; gap: 8px; }
+  .marca { flex: 1 1 100%; flex-wrap: wrap; }
+  .marca .separador { display: none; }
+  .navegacion { display: flex !important; width: 100%; order: 3; gap: 4px; overflow-x: auto; }
+  .navegacion .nav-link { font-size: 12px; padding: 8px 9px; }
+  .navegacion .nav-link .icono { width: 17px; height: 17px; }
+  .usuario-cabecera { margin-left: 0; }
+}

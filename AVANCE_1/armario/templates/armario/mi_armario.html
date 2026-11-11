@@ -5,8 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi armario | StyleMatch AI</title>
-  <link rel="stylesheet" href="{% static 'armario/estilos.css' %}">
+  <link rel="stylesheet" href="{% static 'armario/css/estilos.css' %}">
+  <link rel="stylesheet" href="{% static 'armario/css/menu_armario.css' %}">
   <script src="{% static 'armario/app.js' %}" defer></script>
+  <link rel="stylesheet" href="{% static 'armario/css/header.css' %}">
 </head>
 <body>
   <!-- Iconos reutilizables. No necesitan librerias externas. -->
@@ -34,21 +36,7 @@
     <symbol id="ico-cerrar" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></symbol>
   </svg>
 
-  <header class="barra">
-    <div class="marca">
-      <div class="marca-icono"><svg class="icono"><use href="#ico-percha"/></svg></div>
-      <strong>StyleMatch <span>AI</span></strong>
-      <span class="separador" aria-hidden="true"></span>
-      <nav class="navegacion" aria-label="Secciones">
-        <span class="nav-activa"><svg class="icono"><use href="#ico-percha"/></svg> Mi armario</span>
-        <span class="nav-proxima" title="Disponible en una proxima etapa" aria-disabled="true"><svg class="icono"><use href="#ico-estrella"/></svg> Recomendaciones</span>
-      </nav>
-    </div>
-    <div class="iconos-cabecera" aria-hidden="true">
-      <svg class="icono"><use href="#ico-campana"/></svg>
-      <svg class="icono"><use href="#ico-usuario"/></svg>
-    </div>
-  </header>
+  {% include 'armario/header.html' %}
 
   <main class="contenedor">
     <section class="introduccion">
@@ -209,7 +197,7 @@
             {% for prenda in prendas %}
               <article class="prenda-card">
                 <div class="prenda-foto">
-                  <img src="{{ prenda.imagen.url }}" alt="{% if prenda.nombre %}{{ prenda.nombre }}{% else %}Prenda {{ prenda.pk }}{% endif %}" loading="lazy">
+                  <img src="{% url 'ver_imagen_privada' prenda.pk %}" alt="{% if prenda.nombre %}{{ prenda.nombre }}{% else %}Prenda {{ prenda.pk }}{% endif %}" loading="lazy">
                   <div class="prenda-acciones">
                     <button type="button" class="accion-circular accion-editar" aria-label="Editar prenda {{ prenda.pk }}" title="Editar prenda" data-editar-prenda data-url="{% url 'editar_prenda' prenda.pk %}" data-nombre="{{ prenda.nombre }}" data-categoria="{{ prenda.categoria }}">
                       <svg class="icono"><use href="#ico-editar"/></svg>

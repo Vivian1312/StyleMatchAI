@@ -1,0 +1,80 @@
+{% extends "armario/base_cuenta.html" %}
+
+{% load static %}
+
+{% block estilos_pagina %}
+<link rel="stylesheet"
+      href="{% static 'armario/css/inicio_sesion.css' %}">
+{% endblock %}
+
+
+{% block titulo %}Iniciar sesión{% endblock %}
+
+{% block contenido %}
+
+<div class="auth-icono">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <rect x="4" y="10" width="16" height="11" rx="2"/>
+    <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+  </svg>
+</div>
+
+<h1>¡Bienvenido a StyleMatch AI!</h1>
+
+<p class="auth-descripcion">
+  Inicia sesión para acceder a tu armario digital.
+</p>
+
+{% if form.errors %}
+  <div class="auth-error" role="alert">
+    Usuario o contraseña incorrectos.
+  </div>
+{% endif %}
+
+<form method="post" class="auth-formulario">
+  {% csrf_token %}
+
+  <label for="id_username">
+    Nombre de usuario
+  </label>
+
+  <input
+    id="id_username"
+    type="text"
+    name="username"
+    autocomplete="username"
+    maxlength="150"
+    value="{{ form.username.value|default_if_none:'' }}"
+    placeholder="Ingresa tu usuario"
+    required
+    autofocus
+  >
+
+  <label for="id_password">
+    Contraseña
+  </label>
+
+  <input
+    id="id_password"
+    type="password"
+    name="password"
+    autocomplete="current-password"
+    placeholder="Ingresa tu contraseña"
+    required
+  >
+
+  <input type="hidden" name="next" value="{{ next }}">
+
+  <button type="submit" class="boton boton-principal">
+    Iniciar sesión
+  </button>
+</form>
+
+<p class="auth-enlace">
+  ¿Todavía no tienes una cuenta?
+  <a href="{% url 'registro' %}">
+    Regístrate
+  </a>
+</p>
+
+{% endblock %}

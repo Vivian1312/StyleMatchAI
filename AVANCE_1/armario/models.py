@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class FotoArmario(models.Model):
@@ -11,6 +12,16 @@ class FotoArmario(models.Model):
         ("calzado", "Calzado"),
         ("accesorios", "Accesorios"),
     ]
+
+    # Usuario propietario de la prenda
+    propietario = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="prendas",
+        null=True,
+        blank=True,
+    )
+
 
     # Los campos preexistentes se conservan para no afectar al motor visual.
     imagen = models.ImageField(upload_to="prendas/")

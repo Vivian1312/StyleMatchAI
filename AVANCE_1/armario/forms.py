@@ -21,9 +21,16 @@ class FotoArmarioForm(forms.ModelForm):
                 "Solo se permiten archivos JPG, JPEG o PNG."
             )
 
-        if imagen.image.format not in ("JPEG", "PNG"):
+
+        formato_real = getattr(imagen.image, "format", None)
+
+        print("FORMATO DETECTADO:", formato_real)
+        print("NOMBRE DEL ARCHIVO:", imagen.name)
+
+        if formato_real not in ("JPEG", "PNG"):
             raise forms.ValidationError(
-                "El archivo debe ser una imagen JPG o PNG v\u00e1lida."
+                f"Formato detectado: {formato_real or 'desconocido'}. "
+                "La imagen debe ser JPG o PNG."
             )
 
         return imagen

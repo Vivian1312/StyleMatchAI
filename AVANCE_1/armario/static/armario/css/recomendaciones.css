@@ -1,0 +1,47 @@
+/* StyleMatch AI - pagina provisional de recomendaciones; CSS independiente. */
+:root { --morado:#7745c9; --texto:#241339; --borde:#e9dcfa; }
+* { box-sizing:border-box; }
+body { margin:0; background:#fffdfd; color:var(--texto); font-family:'Segoe UI',Arial,sans-serif; }
+svg { fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.simbolos { width:0; height:0; position:absolute; overflow:hidden; }
+.icono { width:22px; height:22px; flex-shrink:0; }
+.barra { background:white; min-height:74px; border-bottom:1px solid #eee6f8; padding:9px max(3vw,22px); display:flex; justify-content:space-between; align-items:center; gap:14px; }
+.marca { display:flex; align-items:center; gap:13px; min-width:0; }
+.marca-inicio { display:flex; align-items:center; gap:13px; color:inherit; text-decoration:none; white-space:nowrap; }
+.marca-inicio strong { font-size:clamp(20px,1.55vw,28px); letter-spacing:-.6px; }
+.marca-inicio strong span { color:var(--morado); }
+.marca-icono { display:grid; place-items:center; width:49px; height:49px; background:#efddfa; border-radius:14px; }
+.marca-icono .icono { width:34px; height:34px; color:#6732b1; }
+.separador { height:27px; width:1px; background:#e1d1ef; margin:0 4px; }
+.navegacion { display:flex; align-items:center; gap:8px; }
+.nav-enlace { display:inline-flex; align-items:center; gap:9px; font-size:15px; font-weight:600; padding:11px 14px; border-radius:17px; color:#35224e; white-space:nowrap; text-decoration:none; }
+.nav-enlace:hover { background:#f8f0ff; }
+.nav-activa,.nav-activa:hover { color:#6230b1; background:#f0e4ff; }
+.nav-enlace .icono { width:21px; height:21px; color:#6f3eae; }
+.usuario-cabecera { display:flex; align-items:center; gap:10px; white-space:nowrap; }
+.usuario-cabecera > .icono { color:#5d3590; }
+.nombre-usuario { max-width:160px; overflow:hidden; text-overflow:ellipsis; font-size:13px; font-weight:600; }
+.usuario-cabecera form { margin:0; }
+.boton-salir { cursor:pointer; border:1px solid #ddc8f4; border-radius:13px; padding:10px 14px; background:#f5ebff; color:#6437aa; font:600 13px 'Segoe UI',Arial,sans-serif; }
+.boton-salir:hover { background:var(--morado); color:white; }
+a:focus-visible,button:focus-visible { outline:2px solid var(--morado); outline-offset:3px; }
+.contenedor { padding:32px 24px 55px; max-width:1100px; margin:0 auto; text-align:center; }
+.pagina-icono { width:72px; height:72px; display:grid; place-items:center; margin:0 auto 13px; background:#f5e7ff; color:#8742cc; border-radius:21px; }
+.pagina-icono .icono { width:37px; height:37px; }
+h1 { font-size:clamp(26px,2.5vw,38px); margin:0 0 10px; }
+.descripcion { color:#6e5884; margin:0 auto 28px; font-size:15px; max-width:620px; line-height:1.5; }
+.proximamente { padding:50px 28px; border:1px solid var(--borde); border-radius:25px; background:linear-gradient(145deg,#fff,#fdf7ff); box-shadow:0 7px 30px #6b399109; }
+.destello { color:#b48ade; margin:0 auto 12px; }
+.destello .icono { width:65px; height:65px; }
+.etiqueta { display:inline-block; color:#6839a8; background:#f1e6ff; border-radius:20px; padding:8px 13px; font-size:12px; font-weight:700; }
+h2 { margin:19px 0 10px; font-size:25px; }
+.proximamente p { max-width:620px; margin:0 auto; color:#6b577f; font-size:14px; line-height:1.7; }
+.acciones { display:flex; gap:12px; align-items:center; justify-content:center; flex-wrap:wrap; margin-top:22px; }
+.boton { display:inline-flex; align-items:center; justify-content:center; min-width:165px; padding:12px 17px; border-radius:12px; font-size:14px; font-weight:700; text-decoration:none; }
+.boton-morado { color:#fff; background:var(--morado); }
+.boton-morado:hover { background:#6634b3; }
+.boton-claro { color:#6738a5; border:1px solid #ddc8f4; background:#f5ebff; }
+.boton-claro:hover { background:#edddff; }
+@media(max-width:1300px) { .marca-inicio strong { font-size:21px; } .nav-enlace { font-size:13px; padding:9px; } .nav-enlace .icono { width:18px; height:18px; } .usuario-cabecera { gap:6px; } }
+@media(max-width:1040px) { .barra { flex-wrap:wrap; } .marca { flex:1; flex-wrap:wrap; } .separador { display:none; } .navegacion { overflow-x:auto; max-width:100%; } }
+@media(max-width:660px) { .barra { padding:10px 15px; } .marca { flex:1 1 100%; } .marca-icono { width:41px; height:41px; } .marca-icono .icono { width:28px; height:28px; } .navegacion { width:100%; order:3; } .contenedor { padding:24px 14px; } .proximamente { padding:35px 18px; } .usuario-cabecera > .icono { display:none; } }

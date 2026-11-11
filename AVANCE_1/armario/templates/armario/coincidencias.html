@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coincidencias | StyleMatch AI</title>
+  <link rel="stylesheet" href="{% static 'armario/css/coincidencias.css' %}">
+  <script src="{% static 'armario/coincidencias.js' %}" defer></script>
+  <link rel="stylesheet" href="{% static 'armario/css/header.css' %}">
+</head>
+<body data-total-prendas="{{ total_prendas }}" data-armario-url="{% url 'mi_armario' %}">
+  <svg class="simbolos" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="percha" viewBox="0 0 24 24"><path d="M9 6a3 3 0 1 1 6 0c0 1.4-1 2.1-3 3v2l9 7c1 .8.4 2-1 2H4c-1.4 0-2-1.2-1-2l9-7"/></symbol>
+    <symbol id="lupa" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="estrella" viewBox="0 0 24 24"><path d="m12 2 1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6L12 2ZM20 16l.7 2.3L23 19l-2.3.7L20 22l-.7-2.3L18 19l1.3-.7L20 16Z"/></symbol>
+    <symbol id="usuario" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 22v-2a8 8 0 0 1 16 0v2"/></symbol>
+    <symbol id="subir" viewBox="0 0 24 24"><path d="M20 16.5a4.5 4.5 0 0 0-1.5-8.5A6 6 0 0 0 7 6.5 4.5 4.5 0 0 0 6.5 16H9"/><path d="M12 21v-9m-4 4 4-4 4 4"/></symbol>
+    <symbol id="imagen" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></symbol>
+    <symbol id="enlace" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.1 0l3-3a5 5 0 0 0-7.1-7.1l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.1 0l-3 3A5 5 0 0 0 11 21.1l1.7-1.7"/></symbol>
+    <symbol id="ojo" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 11v6M12 7h.01"/></symbol>
+    <symbol id="camisa" viewBox="0 0 24 24"><path d="m16 4 3 2 4 1-2 6-4-2v9H7v-9l-4 2-2-6 4-1 3-2a4 4 0 0 0 8 0Z"/></symbol>
+    <symbol id="chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  </svg>
+
+  {% include 'armario/header.html' %}
+
+  <main class="contenedor">
+    <section class="introduccion">
+      <span class="icono-titulo"><svg class="icono"><use href="#lupa"/></svg></span>
+      <div>
+        <h1>Buscar coincidencias en mi armario</h1>
+        <p>Sube una fotograf&iacute;a o pega el enlace de una prenda que te interesa comprar. Descubre si ya tienes una alternativa similar en tu cl&oacute;set.</p>
+      </div>
+    </section>
+
+    <div class="cuadricula">
+      <section class="tarjeta consulta" aria-labelledby="titulo-consulta">
+        <h2 id="titulo-consulta">Ingresa una prenda externa</h2>
+        <p class="subtitulo">La prenda consultada no se guardar&aacute; en tu armario.</p>
+
+        <div class="pestanas" role="tablist" aria-label="Origen de la prenda">
+          <button type="button" class="pestana activa" id="pestana-subir" role="tab" aria-selected="true" aria-controls="panel-subir">
+            <svg class="icono"><use href="#imagen"/></svg>Subir imagen
+          </button>
+          <button type="button" class="pestana" id="pestana-enlace" role="tab" aria-selected="false" aria-controls="panel-enlace">
+            <svg class="icono"><use href="#enlace"/></svg>Pegar enlace
+          </button>
+        </div>
+
+        <div id="panel-subir" class="panel-origen" role="tabpanel" aria-labelledby="pestana-subir">
+          <div class="zona-carga" id="zona-carga">
+            <div id="carga-vacia" class="carga-vacia">
+              <svg class="icono icono-nube"><use href="#subir"/></svg>
+              <strong>Arrastra y suelta una imagen aqu&iacute;</strong>
+              <p>o haz clic para seleccionarla</p>
+            </div>
+            <div id="carga-seleccionada" class="carga-seleccionada oculto">
+              <img id="vista-archivo" alt="Prenda externa seleccionada">
+              <span id="nombre-archivo" class="nombre-archivo"></span>
+            </div>
+            <label class="boton boton-morado" for="archivo-consulta"><svg class="icono"><use href="#imagen"/></svg>Seleccionar imagen</label>
+            <input id="archivo-consulta" type="file" accept=".jpg,.jpeg,.png,image/jpeg,image/png" class="archivo-oculto">
+            <small>JPG, JPEG o PNG &middot; M&aacute;ximo 10 MB</small>
+          </div>
+        </div>
+
+        <div id="panel-enlace" class="panel-origen oculto" role="tabpanel" aria-labelledby="pestana-enlace">
+          <label class="etiqueta" for="url-consulta">Enlace de la prenda</label>
+          <input type="url" id="url-consulta" class="campo-url" placeholder="https://tienda.com/producto-o-imagen" inputmode="url" autocomplete="url">
+          <p class="nota-url">Puedes pegar el enlace de una tienda. Si es una URL directa de imagen, mostraremos su vista previa. No extraemos productos de sitios web todav&iacute;a.</p>
+          <div id="previa-enlace" class="previa-enlace oculto">
+            <img id="vista-enlace" alt="Imagen externa enlazada" class="oculto">
+            <div id="vista-enlace-generica" class="icono-enlace"><svg class="icono"><use href="#enlace"/></svg></div>
+            <span id="texto-enlace">Enlace de referencia</span>
+          </div>
+        </div>
+        <p id="error-consulta" role="alert" class="mensaje-error oculto"></p>
+        <button type="button" id="boton-buscar" class="boton boton-buscar"><svg class="icono"><use href="#estrella"/></svg>Buscar coincidencias</button>
+        <p class="nota-privacidad">Esta etapa presenta la interfaz. El c&aacute;lculo de similitud se conectar&aacute; cuando el modelo est&eacute; disponible.</p>
+      </section>
+
+      <section class="tarjeta resultados" aria-labelledby="titulo-resultados">
+        <h2 id="titulo-resultados">Resultados de coincidencia</h2>
+        <p class="subtitulo">Comparamos la prenda externa con las prendas de tu armario.</p>
+        <div class="prenda-consultada" id="bloque-consultada">
+          <div class="foto-consultada" id="foto-consultada"><svg class="icono"><use href="#imagen"/></svg></div>
+          <div class="datos-consultada"><strong>Prenda consultada</strong><span id="nombre-consultada">Selecciona una imagen o pega un enlace</span><span class="etiqueta">Referencia externa</span></div>
+        </div>
+        <div class="resultados-cabecera"><h3 id="cantidad-resultados">Coincidencias en tu armario</h3><span><svg class="icono"><use href="#info"/></svg>Hasta 3 resultados, cuando el modelo est&eacute; integrado</span></div>
+        <div id="resultado-estado" class="estado-vacio" aria-live="polite">
+          <svg class="icono"><use href="#percha"/></svg>
+          <strong id="estado-titulo">A&uacute;n no hay una b&uacute;squeda realizada</strong>
+          <p id="estado-descripcion">Carga la foto de una prenda externa para comenzar.</p>
+          {% if total_prendas == 0 %}<a href="{% url 'mi_armario' %}" class="boton boton-morado boton-vacio">Agregar prendas a mi armario</a>{% endif %}
+        </div>
+        <div id="tarjetas-demo" class="tarjetas-demo oculto"></div>
+        <div id="avisos-resultados" class="avisos-resultados oculto"></div>
+      </section>
+    </div>
+
+    <section class="demo-panel" aria-label="Estados de interfaz de prueba">
+      <div><strong>Vista de prueba de la interfaz</strong><p>Estas tarjetas son <b>simuladas</b>. Permiten revisar el dise&ntilde;o de 3, 1 o 0 coincidencias sin afirmar que la IA ha calculado resultados.</p></div>
+      <div class="demo-controles" role="group" aria-label="Cantidad de tarjetas de demostracion">
+        <button type="button" class="demo-btn" data-demo="3">3 coincidencias</button>
+        <button type="button" class="demo-btn" data-demo="1">1 coincidencia</button>
+        <button type="button" class="demo-btn" data-demo="0">Sin coincidencias</button>
+        <button type="button" class="demo-btn" data-demo="reset">Restablecer</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

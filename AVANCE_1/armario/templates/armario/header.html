@@ -1,0 +1,55 @@
+{# Cabecera compartida de las paginas autenticadas de StyleMatch AI. #}
+<header class="sm-header">
+  <div class="sm-header__left">
+    <a class="sm-header__brand" href="{% url 'mi_armario' %}" aria-label="StyleMatch AI, ir a Mi armario">
+      <span class="sm-header__brand-icon" aria-hidden="true">
+        <svg class="sm-header__icon" viewBox="0 0 24 24">
+          <path d="M9 6a3 3 0 1 1 6 0c0 1.4-1 2.1-3 3v2l9 7c1 .8.4 2-1 2H4c-1.4 0-2-1.2-1-2l9-7"/>
+        </svg>
+      </span>
+      <strong>StyleMatch <span>AI</span></strong>
+    </a>
+
+    <span class="sm-header__divider" aria-hidden="true"></span>
+
+    <nav class="sm-header__nav" aria-label="Navegacion principal">
+      <a href="{% url 'mi_armario' %}"
+         class="sm-header__link {% if request.resolver_match.url_name == 'mi_armario' %}sm-header__link--active{% endif %}"
+         {% if request.resolver_match.url_name == 'mi_armario' %}aria-current="page"{% endif %}>
+        <svg class="sm-header__icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 6a3 3 0 1 1 6 0c0 1.4-1 2.1-3 3v2l9 7c1 .8.4 2-1 2H4c-1.4 0-2-1.2-1-2l9-7"/>
+        </svg>
+        Mi armario
+      </a>
+      <a href="{% url 'coincidencias' %}"
+         class="sm-header__link {% if request.resolver_match.url_name == 'coincidencias' %}sm-header__link--active{% endif %}"
+         {% if request.resolver_match.url_name == 'coincidencias' %}aria-current="page"{% endif %}>
+        <svg class="sm-header__icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="10.5" cy="10.5" r="6.5"/>
+          <path d="m16 16 5 5"/>
+        </svg>
+        Coincidencias
+      </a>
+      <a href="{% url 'recomendaciones' %}"
+         class="sm-header__link {% if request.resolver_match.url_name == 'recomendaciones' %}sm-header__link--active{% endif %}"
+         {% if request.resolver_match.url_name == 'recomendaciones' %}aria-current="page"{% endif %}>
+        <svg class="sm-header__icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m12 2 1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6L12 2ZM20 16l.7 2.3L23 19l-2.3.7L20 22l-.7-2.3L18 19l1.3-.7L20 16Z"/>
+        </svg>
+        Recomendaciones
+      </a>
+    </nav>
+  </div>
+
+  <div class="sm-header__user">
+    <svg class="sm-header__icon sm-header__user-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="7" r="4"/>
+      <path d="M4 22v-2a8 8 0 0 1 16 0v2"/>
+    </svg>
+    <span class="sm-header__username" title="{{ request.user.username }}">{{ request.user.username }}</span>
+    <form action="{% url 'logout' %}" method="post">
+      {% csrf_token %}
+      <button class="sm-header__logout" type="submit">Cerrar sesi&oacute;n</button>
+    </form>
+  </div>
+</header>

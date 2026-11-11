@@ -920,3 +920,110 @@ h1 { font-size: 36px; line-height: 1.1; margin: 0 0 10px; }
     height: 25px;
   }
 }
+
+
+
+/* ========================================
+   STYLEMATCH AI - USUARIO EN CABECERA
+   ======================================== */
+
+.usuario-cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* Icono del usuario */
+.usuario-cabecera > .icono {
+  width: 22px;
+  height: 22px;
+  color: #7745c9;
+  flex-shrink: 0;
+}
+
+/* Nombre de usuario */
+.nombre-usuario {
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #42245d;
+
+  max-width: 170px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Formulario de cerrar sesion */
+.usuario-cabecera form {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+/* Boton cerrar sesion */
+.boton-salir {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 15px;
+  border: 1px solid #dec9f7;
+  border-radius: 12px;
+
+  background: #f4eafb;
+  color: #6531a8;
+
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.boton-salir:hover {
+  background: #7745c9;
+  color: #ffffff;
+  border-color: #7745c9;
+}
+
+.boton-salir:focus-visible {
+  outline: 2px solid #7745c9;
+  outline-offset: 3px;
+}
+
+/* Pantallas medianas */
+@media (max-width: 1100px) {
+  .nombre-usuario {
+    max-width: 100px;
+    font-size: 12px;
+  }
+
+  .usuario-cabecera {
+    gap: 8px;
+  }
+}
+
+/* Celulares */
+@media (max-width: 640px) {
+  .usuario-cabecera {
+    gap: 6px;
+  }
+
+  .usuario-cabecera > .icono {
+    display: none;
+  }
+
+  .nombre-usuario {
+    max-width: 90px;
+    font-size: 12px;
+  }
+
+  .boton-salir {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+}

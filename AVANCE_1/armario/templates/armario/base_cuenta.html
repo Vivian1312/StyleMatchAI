@@ -1,0 +1,46 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>
+    {% block titulo %}{% endblock %} | StyleMatch AI
+  </title>
+
+
+    <link rel="stylesheet"
+        href="{% static 'armario/css/base_cuenta.css' %}">
+
+    {% block estilos_pagina %}{% endblock %}
+
+</head>
+
+<body>
+
+  <header class="barra">
+    <div class="marca">
+      <div class="marca-icono">
+        <svg viewBox="0 0 24 24"
+             aria-hidden="true">
+          <path
+            d="M9 6a3 3 0 1 1 6 0c0 1.4-1 2.1-3 3v2l9 7c1 .8.4 2-1 2H4c-1.4 0-2-1.2-1-2l9-7"
+          />
+        </svg>
+      </div>
+
+      <strong>StyleMatch <span>AI</span></strong>
+    </div>
+  </header>
+
+  <main class="auth-pagina">
+    <section class="auth-tarjeta">
+      {% block contenido %}{% endblock %}
+    </section>
+  </main>
+
+</body>
+</html>

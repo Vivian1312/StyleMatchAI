@@ -1,0 +1,61 @@
+/* StyleMatch AI: cabecera compartida. Basada en la vista Coincidencias. */
+.sm-header {
+  --sm-header-purple: #7745c9;
+  width: 100%;
+  min-height: 74px;
+  padding: 9px max(3vw, 22px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  background: #fff;
+  border-bottom: 1px solid #eee6f8;
+  color: #241339;
+  font-family: "Segoe UI", Arial, sans-serif;
+  box-sizing: border-box;
+}
+.sm-header *, .sm-header *::before, .sm-header *::after { box-sizing: border-box; }
+.sm-header__left { display: flex; align-items: center; gap: 13px; min-width: 0; }
+.sm-header__brand { display: inline-flex; align-items: center; gap: 13px; color: inherit; text-decoration: none; white-space: nowrap; }
+.sm-header__brand strong { font-size: clamp(20px, 1.55vw, 28px); letter-spacing: -.6px; }
+.sm-header__brand strong span { color: var(--sm-header-purple); }
+.sm-header__brand-icon { display: grid; place-items: center; width: 49px; height: 49px; border-radius: 14px; background: #efddfa; flex: 0 0 49px; }
+.sm-header .sm-header__icon { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+.sm-header__brand-icon .sm-header__icon { width: 34px; height: 34px; color: #6732b1; }
+.sm-header__divider { height: 27px; width: 1px; background: #e1d1ef; margin: 0 4px; flex-shrink: 0; }
+.sm-header__nav { display: flex; align-items: center; gap: 8px; }
+.sm-header__link { display: inline-flex; align-items: center; gap: 9px; padding: 11px 14px; border-radius: 17px; color: #35224e; text-decoration: none; font-size: 15px; font-weight: 600; white-space: nowrap; transition: background .2s ease; }
+.sm-header__link:hover { background: #f8f0ff; }
+.sm-header__link--active, .sm-header__link--active:hover { color: #6230b1; background: #f0e4ff; }
+.sm-header__link .sm-header__icon { color: #6f3eae; }
+.sm-header__user { display: flex; align-items: center; gap: 10px; min-width: 0; white-space: nowrap; }
+.sm-header .sm-header__user-icon { width: 23px; height: 23px; color: #5d3590; }
+.sm-header__username { max-width: 160px; overflow: hidden; text-overflow: ellipsis; font-size: 13px; font-weight: 600; }
+.sm-header__user form { margin: 0; }
+.sm-header__logout { cursor: pointer; border: 1px solid #ddc8f4; border-radius: 13px; padding: 10px 14px; background: #f5ebff; color: #6437aa; font: 600 13px "Segoe UI", Arial, sans-serif; }
+.sm-header__logout:hover { background: var(--sm-header-purple); color: #fff; }
+.sm-header a:focus-visible, .sm-header button:focus-visible { outline: 2px solid var(--sm-header-purple); outline-offset: 3px; }
+
+@media (max-width: 1300px) {
+  .sm-header__brand strong { font-size: 21px; }
+  .sm-header__link { font-size: 13px; padding: 9px; }
+  .sm-header__link .sm-header__icon { width: 18px; height: 18px; }
+  .sm-header__user { gap: 6px; }
+}
+@media (max-width: 1040px) {
+  .sm-header { flex-wrap: wrap; }
+  .sm-header__left { flex: 1 1 100%; flex-wrap: wrap; }
+  .sm-header__divider { display: none; }
+  .sm-header__nav { overflow-x: auto; max-width: 100%; }
+  .sm-header__user { margin-left: auto; }
+}
+@media (max-width: 660px) {
+  .sm-header { padding: 10px 15px; }
+  .sm-header__left { gap: 9px; }
+  .sm-header__brand-icon { width: 41px; height: 41px; flex-basis: 41px; }
+  .sm-header__brand-icon .sm-header__icon { width: 28px; height: 28px; }
+  .sm-header__brand strong { font-size: 21px; }
+  .sm-header__nav { width: 100%; order: 3; }
+  .sm-header__user-icon { display: none; }
+  .sm-header__username { max-width: 120px; }
+}
