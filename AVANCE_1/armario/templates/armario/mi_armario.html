@@ -1,4 +1,3 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
@@ -10,175 +9,401 @@
   <script src="{% static 'armario/app.js' %}" defer></script>
 </head>
 <body>
+  <!-- Iconos reutilizables. No necesitan librerias externas. -->
+  <svg class="iconos-definidos" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="ico-percha" viewBox="0 0 24 24"><path d="M9 6a3 3 0 1 1 6 0c0 1.4-1 2.1-3 3v2l9 7c1 .8.4 2-1 2H4c-1.4 0-2-1.2-1-2l9-7"/></symbol>
+    <symbol id="ico-todas" viewBox="0 0 24 24"><rect x="3" y="3" width="4" height="4" rx="1"/><rect x="10" y="3" width="4" height="4" rx="1"/><rect x="17" y="3" width="4" height="4" rx="1"/><rect x="3" y="10" width="4" height="4" rx="1"/><rect x="10" y="10" width="4" height="4" rx="1"/><rect x="17" y="10" width="4" height="4" rx="1"/><rect x="3" y="17" width="4" height="4" rx="1"/><rect x="10" y="17" width="4" height="4" rx="1"/><rect x="17" y="17" width="4" height="4" rx="1"/></symbol>
+    <symbol id="ico-tops" viewBox="0 0 24 24"><path d="m16 4 3 2 4 1-2 6-4-2v9H7v-9l-4 2-2-6 4-1 3-2a4 4 0 0 0 8 0Z"/></symbol>
+    <symbol id="ico-pantalones" viewBox="0 0 24 24"><path d="M7 3h10l2 18h-6l-1-11-1 11H5L7 3Z"/><path d="M7 7h10"/></symbol>
+    <symbol id="ico-chaquetas" viewBox="0 0 24 24"><path d="m8 3-4 3-2 14h5l2-11v12h6V9l2 11h5L20 6l-4-3-4 5-4-5Z"/><path d="M12 8v13"/></symbol>
+    <symbol id="ico-vestidos" viewBox="0 0 24 24"><path d="m10 3-2 4 4 4 4-4-2-4M8 7l-2 3 2 4-4 7h16l-4-7 2-4-2-3M10 3h4"/></symbol>
+    <symbol id="ico-faldas" viewBox="0 0 24 24"><path d="M7 4h10l4 16H3L7 4Z"/><path d="M7 8h10M12 8v12"/></symbol>
+    <symbol id="ico-calzado" viewBox="0 0 24 24"><path d="M3 12c4 0 6 6 11 6h7v3H3a2 2 0 0 1-2-2v-5l2-2Zm0 0 2-5 5 5 4 2h6v4"/></symbol>
+    <symbol id="ico-accesorios" viewBox="0 0 24 24"><path d="M4 13c0-3 3-5 8-5s8 2 8 5v5H4v-5Z"/><path d="M2 18c3 4 17 4 20 0M8 8c0-3 2-5 4-5s4 2 4 5"/></symbol>
+    <symbol id="ico-sin_categoria" viewBox="0 0 24 24"><path d="M4 4h10l6 6v10H4V4Z"/><path d="M14 4v6h6"/><path d="M9 15h6"/></symbol>
+    <symbol id="ico-subir" viewBox="0 0 24 24"><path d="M20 16.5a4.5 4.5 0 0 0-1.5-8.5A6 6 0 0 0 7 6.5 4.5 4.5 0 0 0 6.5 16H9"/><path d="M12 21v-9m-4 4 4-4 4 4"/></symbol>
+    <symbol id="ico-imagen" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></symbol>
+    <symbol id="ico-editar" viewBox="0 0 24 24"><path d="M4 20l4.5-1 11-11-3.5-3.5-11 11L4 20Z"/><path d="m14.5 6.5 3.5 3.5"/></symbol>
+    <symbol id="ico-papelera" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14M10 11v6m4-6v6"/></symbol>
+    <symbol id="ico-buscar" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="ico-estrella" viewBox="0 0 24 24"><path d="m12 2 1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6L12 2ZM20 16l.7 2.3L23 19l-2.3.7L20 22l-.7-2.3L18 19l1.3-.7L20 16Z"/></symbol>
+    <symbol id="ico-campana" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></symbol>
+    <symbol id="ico-usuario" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 22v-2a8 8 0 0 1 16 0v2"/></symbol>
+    <symbol id="ico-izquierda" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
+    <symbol id="ico-derecha" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="ico-cerrar" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></symbol>
+  </svg>
+
   <header class="barra">
     <div class="marca">
-      <div class="marca-icono">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M9 6a3 3 0 1 1 6 0c0 1.4-1 2.1-3 3v2l9 7c1 .8.4 2-1 2H4c-1.4 0-2-1.2-1-2l9-7"/>
-        </svg>
-      </div>
+      <div class="marca-icono"><svg class="icono"><use href="#ico-percha"/></svg></div>
       <strong>StyleMatch <span>AI</span></strong>
-      <span class="separador"></span>
-      <span class="nombre-pagina">Mi armario</span>
+      <span class="separador" aria-hidden="true"></span>
+      <nav class="navegacion" aria-label="Secciones">
+        <span class="nav-activa"><svg class="icono"><use href="#ico-percha"/></svg> Mi armario</span>
+        <span class="nav-proxima" title="Disponible en una proxima etapa" aria-disabled="true"><svg class="icono"><use href="#ico-estrella"/></svg> Recomendaciones</span>
+      </nav>
     </div>
-    <div class="iconos-cabecera">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/>
-      </svg>
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <circle cx="12" cy="7" r="4"/>
-        <path d="M4 22v-2a8 8 0 0 1 16 0v2"/>
-      </svg>
+    <div class="iconos-cabecera" aria-hidden="true">
+      <svg class="icono"><use href="#ico-campana"/></svg>
+      <svg class="icono"><use href="#ico-usuario"/></svg>
     </div>
   </header>
 
   <main class="contenedor">
     <section class="introduccion">
-      <div class="icono-camiseta">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="m16 4 3 2 4 1-2 6-4-2v9H7v-9l-4 2-2-6 4-1 3-2a4 4 0 0 0 8 0Z"/>
-        </svg>
-      </div>
+      <div class="icono-camiseta"><svg class="icono"><use href="#ico-tops"/></svg></div>
       <div>
         <h1>Mi armario</h1>
-        <p>Sube fotografías de tus prendas para crear tu armario digital y, más adelante, obtener recomendaciones de looks con StyleMatch AI.</p>
+        <p>Organiza tus prendas por categor&iacute;as, visualiza tu cl&oacute;set y obt&eacute;n recomendaciones de looks con StyleMatch AI.</p>
       </div>
     </section>
 
     {% if messages %}
-      {% for message in messages %}
-        <p class="mensaje" role="status">{{ message }}</p>
-      {% endfor %}
+      <div class="mensajes" aria-live="polite">
+        {% for message in messages %}
+          <p class="mensaje {% if message.tags == 'error' %}mensaje-error{% endif %}" role="status">{{ message }}</p>
+        {% endfor %}
+      </div>
     {% endif %}
 
     <div class="cuadricula">
-
-      <!-- CARGAR FOTOGRAFÍA -->
-      <section class="tarjeta tarjeta-carga">
-        <h2>Sube una foto de tu prenda</h2>
-
-        <form action="{% url 'mi_armario' %}"
-              method="post"
-              enctype="multipart/form-data"
-              id="form-subida">
+      <!-- CARGAR PRENDAS -->
+      <section class="tarjeta tarjeta-carga" aria-labelledby="titulo-carga">
+        <h2 id="titulo-carga">Agregar nueva prenda</h2>
+        <form action="{% url 'mi_armario' %}" method="post" enctype="multipart/form-data" id="form-subida">
           {% csrf_token %}
-
           <div class="zona-carga" id="zona-carga">
-            <svg class="icono-nube" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M20 16.5a4.5 4.5 0 0 0-1.5-8.5A6 6 0 0 0 7 6.5 4.5 4.5 0 0 0 6.5 16H9"/>
-              <path d="M12 21v-9m-4 4 4-4 4 4"/>
-            </svg>
-
-            <strong>Arrastra y suelta una imagen aquí</strong>
-            <p>o haz clic en el botón para seleccionarla</p>
-
-            <label class="boton boton-principal" for="id_imagen">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="3" y="3" width="18" height="18" rx="2"/>
-                <circle cx="8.5" cy="8.5" r="1.5"/>
-                <path d="m21 15-5-5L5 21"/>
-              </svg>
-              Seleccionar imagen
-            </label>
-
-            <input
-              id="id_imagen"
-              name="imagen"
-              type="file"
-              accept=".jpg,.jpeg,.png,image/jpeg,image/png"
-              class="archivo-oculto"
-            >
-
-            <small>Formatos soportados: JPG · JPEG · PNG (máx. 10 MB)</small>
+            <div id="carga-vacia" class="carga-vacia">
+              <svg class="icono icono-nube"><use href="#ico-subir"/></svg>
+              <strong>Arrastra y suelta una imagen aqu&iacute;</strong>
+              <p>o haz clic en el bot&oacute;n para seleccionarla</p>
+            </div>
+            <div id="carga-seleccionada" class="carga-seleccionada oculto">
+              <img id="imagen-preview" alt="Vista previa de la prenda seleccionada">
+              <span id="nombre-archivo" class="nombre-archivo"></span>
+            </div>
+            <label class="boton boton-principal" for="id_imagen"><svg class="icono"><use href="#ico-imagen"/></svg>Seleccionar imagen</label>
+            <input id="id_imagen" name="imagen" type="file" accept=".jpg,.jpeg,.png,image/jpeg,image/png" class="archivo-oculto">
+            <small>Formatos: JPG &middot; JPEG &middot; PNG (m&aacute;x. 10 MB)</small>
           </div>
 
-          {% if formulario.imagen.errors %}
-            <div class="error-servidor" role="alert">
-              {{ formulario.imagen.errors }}
+          {% if formulario.imagen.errors %}<div class="error-servidor" role="alert">{{ formulario.imagen.errors }}</div>{% endif %}
+          <p id="error-cliente" class="error-cliente oculto" role="alert"></p>
+
+          
+          <div class="campo-categoria">
+            <label for="boton-categoria">
+              Categoría de la prenda
+            </label>
+
+            <div class="select-envoltorio" id="selector-categoria">
+
+              <!-- Select original: Django sigue recibiendo categoria -->
+              <select
+                id="id_categoria"
+                name="categoria"
+                class="select-nativo"
+                tabindex="-1"
+                aria-hidden="true"
+              >
+                <option value="">
+                  Selecciona una categoría (opcional)
+                </option>
+
+                {% for codigo, etiqueta in categorias %}
+                  <option
+                    value="{{ codigo }}"
+                    {% if formulario.categoria.value == codigo %}selected{% endif %}
+                  >
+                    {{ etiqueta }}
+                  </option>
+                {% endfor %}
+              </select>
+
+              <!-- Botón visible: toda el área es clicable -->
+              <button
+                type="button"
+                class="boton-select"
+                id="boton-categoria"
+                aria-expanded="false"
+                aria-haspopup="menu"
+                aria-controls="menu-categorias"
+              >
+                <svg class="icono">
+                  <use href="#ico-tops"></use>
+                </svg>
+
+                <span class="texto-select" id="texto-categoria">
+                  Selecciona una categoría (opcional)
+                </span>
+
+                <svg class="icono icono-flecha" viewBox="0 0 24 24">
+                  <path d="m6 9 6 6 6-6"></path>
+                </svg>
+              </button>
+
+              <!-- Menú personalizado -->
+              <div
+                class="lista-categorias"
+                id="menu-categorias"
+                role="menu"
+                hidden
+              >
+                <button
+                  type="button"
+                  class="opcion-categoria"
+                  role="menuitemradio"
+                  aria-checked="false"
+                  data-valor=""
+                >
+                  Otro
+                </button>
+
+                {% for codigo, etiqueta in categorias %}
+                  <button
+                    type="button"
+                    class="opcion-categoria"
+                    role="menuitemradio"
+                    aria-checked="false"
+                    data-valor="{{ codigo }}"
+                  >
+                    {{ etiqueta }}
+                  </button>
+                {% endfor %}
+              </div>
             </div>
-          {% endif %}
 
-          <p id="error-cliente"
-             class="error-cliente oculto"
-             role="alert"></p>
+            {% if formulario.categoria.errors %}
+              <div class="error-servidor" role="alert">
+                {{ formulario.categoria.errors }}
+              </div>
+            {% endif %}
+          </div>
 
-          <button type="submit"
-                  class="boton boton-guardar"
-                  id="boton-guardar"
-                  disabled>
-            Guardar fotografía
-          </button>
+          <button type="submit" class="boton boton-guardar" id="boton-guardar" disabled>Guardar prenda</button>
         </form>
       </section>
 
-      <!-- VISTA PREVIA -->
-      <section class="tarjeta tarjeta-preview">
-        <div class="cabecera-tarjeta">
-          <h2>Vista previa</h2>
-          <span id="estado-guardado"
-                class="estado-ok {% if not foto %}oculto{% endif %}">
-            ✓ Imagen guardada correctamente
-          </span>
-        </div>
-
-        <div class="marco-preview">
-          <img id="imagen-preview"
-               {% if foto %}src="{{ foto.imagen.url }}"{% endif %}
-               alt="Fotografía seleccionada de una prenda"
-               class="{% if not foto %}oculto{% endif %}">
-
-          <div id="preview-vacio"
-               class="preview-vacio {% if foto %}oculto{% endif %}">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="3" y="3" width="18" height="18" rx="2"/>
-              <circle cx="8.5" cy="8.5" r="1.5"/>
-              <path d="m21 15-5-5L5 21"/>
-            </svg>
-            <strong>Aún no hay una fotografía</strong>
-            <span>Selecciona una imagen para verla aquí.</span>
-          </div>
-        </div>
-
-        <p id="aviso-pendiente"
-           class="aviso-pendiente oculto">
-          Vista previa temporal. Pulsa «Guardar fotografía» para conservarla.
-        </p>
-
-        <div class="acciones-preview">
-          <button type="button"
-                  id="boton-cambiar"
-                  class="boton boton-secundario {% if not foto %}oculto{% endif %}">
-            Cambiar imagen
-          </button>
-
-          <form action="{% url 'eliminar_foto' %}"
-                method="post"
-                id="form-eliminar"
-                class="{% if not foto %}oculto{% endif %}">
-            {% csrf_token %}
-            <button type="submit" class="boton boton-eliminar">
-              Quitar imagen
-            </button>
+      <!-- GALERIA DE PRENDAS GUARDADAS EN SQLITE -->
+      <section class="tarjeta galeria" aria-labelledby="titulo-galeria">
+        <div class="galeria-encabezado">
+          <h2 id="titulo-galeria">Mis prendas <span>({{ total_prendas }})</span></h2>
+          <form class="buscador" action="{% url 'mi_armario' %}" method="get" role="search">
+            <svg class="icono"><use href="#ico-buscar"/></svg>
+            <input type="search" name="q" value="{{ busqueda }}" placeholder="Buscar prenda..." aria-label="Buscar prendas por nombre">
+            {% if categoria_actual %}<input type="hidden" name="categoria" value="{{ categoria_actual }}">{% endif %}
           </form>
         </div>
-      </section>
 
-      <!-- CONSEJOS -->
-      <section class="tarjeta consejos">
-        <div class="titulo-consejos">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M9 18h6m-5 3h4M8 15c-1.9-1.2-3-3.2-3-5.5a7 7 0 1 1 14 0c0 2.3-1.1 4.3-3 5.5-.7.6-1 1.2-1 2H9c0-.8-.3-1.4-1-2Z"/>
-          </svg>
-          <h2>Consejos para la fotografía</h2>
-        </div>
+        <nav class="filtros" aria-label="Filtrar prendas por categoria">
+          <a href="{% url 'mi_armario' %}{% if busqueda %}?q={{ busqueda|urlencode }}{% endif %}" class="filtro {% if not categoria_actual %}filtro-activo{% endif %}"><svg class="icono"><use href="#ico-todas"/></svg>Todas</a>
+          {% for codigo, etiqueta in categorias %}
+            <a href="?categoria={{ codigo }}{% if busqueda %}&amp;q={{ busqueda|urlencode }}{% endif %}" class="filtro {% if categoria_actual == codigo %}filtro-activo{% endif %}"><svg class="icono"><use href="#ico-{{ codigo }}"/></svg>{{ etiqueta }}</a>
+          {% endfor %}
+          <a href="?categoria=sin_categoria{% if busqueda %}&amp;q={{ busqueda|urlencode }}{% endif %}" class="filtro {% if categoria_actual == 'sin_categoria' %}filtro-activo{% endif %}"><svg class="icono"><use href="#ico-sin_categoria"/></svg>Otro</a>
+        </nav>
 
-        <ul>
-          <li><b>Usa buena iluminación:</b> preferiblemente luz natural y sin sombras fuertes.</li>
-          <li><b>Elige un fondo liso:</b> como una pared blanca o clara.</li>
-          <li><b>Muestra la prenda completa:</b> que se vea toda la prenda, sin cortes.</li>
-        </ul>
+        {% if prendas %}
+          <div class="prendas-grid">
+            {% for prenda in prendas %}
+              <article class="prenda-card">
+                <div class="prenda-foto">
+                  <img src="{{ prenda.imagen.url }}" alt="{% if prenda.nombre %}{{ prenda.nombre }}{% else %}Prenda {{ prenda.pk }}{% endif %}" loading="lazy">
+                  <div class="prenda-acciones">
+                    <button type="button" class="accion-circular accion-editar" aria-label="Editar prenda {{ prenda.pk }}" title="Editar prenda" data-editar-prenda data-url="{% url 'editar_prenda' prenda.pk %}" data-nombre="{{ prenda.nombre }}" data-categoria="{{ prenda.categoria }}">
+                      <svg class="icono"><use href="#ico-editar"/></svg>
+                    </button>
+                    <form method="post" action="{% url 'eliminar_prenda' prenda.pk %}" class="form-eliminar-prenda">
+                      {% csrf_token %}
+                      <button type="submit" class="accion-circular accion-eliminar" title="Eliminar prenda" aria-label="Eliminar prenda {{ prenda.pk }}"><svg class="icono"><use href="#ico-papelera"/></svg></button>
+                    </form>
+                  </div>
+                </div>
+                <div class="prenda-info">
+                  <h3>{% if prenda.nombre %}{{ prenda.nombre }}{% else %}Prenda {{ prenda.pk }}{% endif %}</h3>
+                  <span class="etiqueta-categoria"><svg class="icono"><use href="#ico-{{ prenda.categoria|default:'sin_categoria' }}"/></svg>{% if prenda.categoria %}{{ prenda.get_categoria_display }}{% else %}Otro{% endif %}</span>
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="galeria-vacia">
+            <svg class="icono"><use href="#ico-tops"/></svg>
+            {% if total_prendas == 0 %}
+              <strong>Tu armario est&aacute; vac&iacute;o</strong>
+              <p>Selecciona una fotograf&iacute;a y gu&aacute;rdala para comenzar.</p>
+            {% else %}
+              <strong>No encontramos prendas</strong>
+              <p>Prueba otra categor&iacute;a o cambia los t&eacute;rminos de b&uacute;squeda.</p>
+              <a href="{% url 'mi_armario' %}" class="enlace-limpiar">Mostrar todas las prendas</a>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if prendas.paginator.num_pages > 1 %}
+          <nav class="paginacion" aria-label="Paginas de prendas">
+            {% if prendas.has_previous %}
+              <a aria-label="P&aacute;gina anterior" href="?categoria={{ categoria_actual|urlencode }}&amp;q={{ busqueda|urlencode }}&amp;page={{ prendas.previous_page_number }}"><svg class="icono"><use href="#ico-izquierda"/></svg></a>
+            {% endif %}
+            {% for numero in rango_paginas %}
+              {% if numero == prendas.paginator.ELLIPSIS %}
+                <span class="paginacion-puntos">&hellip;</span>
+              {% elif numero == prendas.number %}
+                <span class="pagina-actual" aria-current="page">{{ numero }}</span>
+              {% else %}
+                <a href="?categoria={{ categoria_actual|urlencode }}&amp;q={{ busqueda|urlencode }}&amp;page={{ numero }}">{{ numero }}</a>
+              {% endif %}
+            {% endfor %}
+            {% if prendas.has_next %}
+              <a aria-label="P&aacute;gina siguiente" href="?categoria={{ categoria_actual|urlencode }}&amp;q={{ busqueda|urlencode }}&amp;page={{ prendas.next_page_number }}"><svg class="icono"><use href="#ico-derecha"/></svg></a>
+            {% endif %}
+          </nav>
+        {% endif %}
       </section>
     </div>
   </main>
+
+  <dialog id="dialog-editar" class="dialog-editar" aria-labelledby="titulo-editar">
+    <div class="dialog-cabecera">
+      <h2 id="titulo-editar">Editar prenda</h2>
+      <button type="button" class="dialog-cerrar" id="cerrar-edicion" aria-label="Cerrar"><svg class="icono"><use href="#ico-cerrar"/></svg></button>
+    </div>
+    <form id="form-editar" method="post">
+      {% csrf_token %}
+      <label for="editar-nombre">Nombre de la prenda</label>
+      <input id="editar-nombre" name="nombre" maxlength="120" type="text" placeholder="Ej. Su&eacute;ter tejido">
+      <label for="editar-categoria">Categor&iacute;a</label>
+      <select id="editar-categoria" name="categoria">
+        <option value="">Otro</option>
+        {% for codigo, etiqueta in categorias %}<option value="{{ codigo }}">{{ etiqueta }}</option>{% endfor %}
+      </select>
+      <div class="dialog-pie">
+        <button class="boton boton-secundario" id="cancelar-edicion" type="button">Cancelar</button>
+        <button class="boton boton-principal" type="submit">Guardar cambios</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+
+    const contenedor = document.getElementById("selector-categoria");
+    const boton = document.getElementById("boton-categoria");
+    const menu = document.getElementById("menu-categorias");
+    const select = document.getElementById("id_categoria");
+    const texto = document.getElementById("texto-categoria");
+
+    if (!contenedor || !boton || !menu || !select) return;
+
+    const opciones = Array.from(
+      menu.querySelectorAll(".opcion-categoria")
+    );
+
+    function actualizarSeleccion() {
+      const opcionSeleccionada =
+        select.options[select.selectedIndex];
+
+      texto.textContent = select.value
+        ? opcionSeleccionada.textContent.trim()
+        : "Selecciona una categoría (opcional)";
+
+      opciones.forEach(opcion => {
+        const activa = opcion.dataset.valor === select.value;
+
+        opcion.classList.toggle("seleccionada", activa);
+        opcion.setAttribute("aria-checked", String(activa));
+      });
+    }
+
+    function abrirMenu() {
+      menu.hidden = false;
+      boton.setAttribute("aria-expanded", "true");
+
+      const seleccionada = opciones.find(
+        opcion => opcion.dataset.valor === select.value
+      );
+
+      (seleccionada || opciones[0]).focus();
+    }
+
+    function cerrarMenu(devolverFoco = false) {
+      menu.hidden = true;
+      boton.setAttribute("aria-expanded", "false");
+
+      if (devolverFoco) boton.focus();
+    }
+
+    // Abre o cierra al hacer clic en cualquier parte del recuadro
+    boton.addEventListener("click", function () {
+      if (menu.hidden) {
+        abrirMenu();
+      } else {
+        cerrarMenu();
+      }
+    });
+
+    // Selección de categoría
+    opciones.forEach(opcion => {
+      opcion.addEventListener("click", function () {
+        select.value = opcion.dataset.valor;
+
+        select.dispatchEvent(
+          new Event("change", { bubbles: true })
+        );
+
+        actualizarSeleccion();
+        cerrarMenu(true);
+      });
+    });
+
+    // Navegación con flechas del teclado
+    menu.addEventListener("keydown", function (evento) {
+      const indice = opciones.indexOf(document.activeElement);
+
+      if (evento.key === "ArrowDown") {
+        evento.preventDefault();
+        opciones[(indice + 1) % opciones.length].focus();
+      }
+
+      if (evento.key === "ArrowUp") {
+        evento.preventDefault();
+        opciones[
+          (indice - 1 + opciones.length) % opciones.length
+        ].focus();
+      }
+
+      if (evento.key === "Home") {
+        evento.preventDefault();
+        opciones[0].focus();
+      }
+
+      if (evento.key === "End") {
+        evento.preventDefault();
+        opciones[opciones.length - 1].focus();
+      }
+    });
+
+    // Cerrar al hacer clic fuera
+    document.addEventListener("click", function (evento) {
+      if (!contenedor.contains(evento.target)) {
+        cerrarMenu();
+      }
+    });
+
+    // Cerrar con Escape
+    document.addEventListener("keydown", function (evento) {
+      if (evento.key === "Escape" && !menu.hidden) {
+        evento.preventDefault();
+        cerrarMenu(true);
+      }
+    });
+
+    select.addEventListener("change", actualizarSeleccion);
+
+    actualizarSeleccion();
+  });
+  </script>
+
 </body>
 </html>

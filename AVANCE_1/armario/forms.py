@@ -1,13 +1,11 @@
-
 from django import forms
 from .models import FotoArmario
 
 
 class FotoArmarioForm(forms.ModelForm):
-
     class Meta:
         model = FotoArmario
-        fields = ["imagen"]
+        fields = ["imagen", "categoria"]
 
     def clean_imagen(self):
         imagen = self.cleaned_data["imagen"]
@@ -18,7 +16,6 @@ class FotoArmarioForm(forms.ModelForm):
             )
 
         extensiones = (".jpg", ".jpeg", ".png")
-
         if not imagen.name.lower().endswith(extensiones):
             raise forms.ValidationError(
                 "Solo se permiten archivos JPG, JPEG o PNG."
@@ -26,7 +23,13 @@ class FotoArmarioForm(forms.ModelForm):
 
         if imagen.image.format not in ("JPEG", "PNG"):
             raise forms.ValidationError(
-                "El archivo debe ser una imagen JPG o PNG válida."
+                "El archivo debe ser una imagen JPG o PNG v\u00e1lida."
             )
 
         return imagen
+
+
+class EditarPrendaForm(forms.ModelForm):
+    class Meta:
+        model = FotoArmario
+        fields = ["nombre", "categoria"]

@@ -461,3 +461,462 @@ h2 {
     font-size: 21px;
   }
 }
+
+/* =============================================================
+   STYLEMATCH AI | Diseno compacto para escritorio / Full HD
+   Mantiene los colores y el comportamiento de Django.
+   En pantallas moviles se conservan las reglas originales.
+   ============================================================= */
+@media (min-width: 831px) {
+  .barra {
+    height: 66px;
+    padding: 0 max(3vw, 24px);
+  }
+
+  .marca, .iconos-cabecera { gap: 12px; }
+  .marca-icono { width: 44px; height: 44px; border-radius: 12px; }
+  .marca-icono svg { width: 31px; height: 31px; }
+  .marca strong { font-size: 23px; }
+  .nombre-pagina { font-size: 17px; }
+  .separador { height: 25px; margin: 0 5px; }
+  .iconos-cabecera svg { width: 24px; height: 24px; }
+
+  .contenedor {
+    max-width: 1320px;
+    padding: 20px 25px 26px;
+  }
+
+  .introduccion { gap: 16px; margin-bottom: 18px; }
+  .icono-camiseta { flex: 0 0 58px; height: 58px; border-radius: 14px; }
+  .icono-camiseta svg { width: 34px; height: 34px; }
+  h1 { font-size: 30px; margin-bottom: 4px; }
+  .introduccion p { font-size: 15.5px; line-height: 1.38; max-width: 1050px; }
+
+  .cuadricula { gap: 16px; }
+  .tarjeta { padding: 20px; border-radius: 18px; }
+  h2 { font-size: 20px; margin-bottom: 15px; }
+
+  .zona-carga {
+    min-height: 236px;
+    padding: 15px;
+    border-radius: 15px;
+  }
+  .icono-nube { width: 56px; height: 56px; margin-bottom: 9px; }
+  .zona-carga strong { font-size: 16px; }
+  .zona-carga p { font-size: 14px; margin: 6px 0 12px; }
+  .zona-carga small { font-size: 12px; margin-top: 12px; }
+
+  .boton { padding: 10px 16px; border-radius: 10px; font-size: 14px; }
+  .boton svg { width: 18px; height: 18px; }
+  .boton-guardar { margin-top: 12px; }
+
+  .cabecera-tarjeta { margin-bottom: 15px; }
+  .estado-ok { font-size: 12px; padding: 7px 9px; }
+  .marco-preview { height: 236px; border-radius: 14px; }
+  .preview-vacio { gap: 8px; padding: 14px; font-size: 14px; }
+  .preview-vacio svg { width: 55px; height: 55px; }
+  .acciones-preview { gap: 9px; margin-top: 12px; }
+  .aviso-pendiente { font-size: 12px; margin: 10px 0 0; }
+
+  .consejos { padding: 16px 20px; }
+  .titulo-consejos { gap: 10px; }
+  .titulo-consejos svg { width: 29px; height: 29px; }
+  .titulo-consejos h2 { font-size: 18px; }
+  .consejos ul { margin-top: 10px; }
+  .consejos li { font-size: 14px; line-height: 1.34; margin: 6px 0; padding-left: 19px; }
+  .consejos li::before { width: 7px; height: 7px; top: 7px; }
+}
+
+/* Si el navegador tiene menos altura util, se comprime un poco mas. */
+@media (min-width: 831px) and (max-height: 760px) {
+  .barra { height: 60px; }
+  .contenedor { padding-top: 14px; padding-bottom: 16px; }
+  .introduccion { margin-bottom: 13px; }
+  .icono-camiseta { flex-basis: 52px; height: 52px; }
+  h1 { font-size: 27px; }
+  .introduccion p { font-size: 14px; }
+  .tarjeta { padding: 16px; }
+  h2 { font-size: 19px; margin-bottom: 12px; }
+  .zona-carga { min-height: 210px; }
+  .icono-nube { width: 48px; height: 48px; margin-bottom: 7px; }
+  .marco-preview { height: 210px; }
+  .cabecera-tarjeta { margin-bottom: 12px; }
+  .consejos { padding: 12px 16px; }
+  .consejos li { margin: 4px 0; }
+  .consejos ul { margin-top: 7px; }
+}
+
+/* =============================================================
+   StyleMatch AI - Vista 1.3.2: prendas y categorias.
+   Conserva la paleta y los estilos existentes; aplica la nueva
+   distribucion al final para respetar la interfaz ya aprobada.
+   ============================================================= */
+.iconos-definidos { position: absolute; width: 0; height: 0; overflow: hidden; }
+.icono { width: 22px; height: 22px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.oculto { display: none !important; }
+
+.barra { height: 74px; padding: 0 max(3.6vw, 20px); }
+.marca { gap: 16px; min-width: 0; }
+.marca-icono { width: 54px; height: 54px; border-radius: 14px; }
+.marca-icono .icono { width: 36px; height: 36px; }
+.marca strong { font-size: 28px; letter-spacing: -.7px; }
+.separador { margin: 0 6px; }
+.navegacion { display: flex; align-items: center; gap: 20px; white-space: nowrap; }
+.navegacion span { display: inline-flex; align-items: center; gap: 9px; font-size: 17px; font-weight: 500; }
+.nav-activa { padding: 12px 18px; border-radius: 18px; background: #f1e5ff; color: #503185; }
+.nav-proxima { color: #342449; }
+.navegacion .icono { width: 23px; height: 23px; color: #6f3eae; }
+.iconos-cabecera { gap: 26px; color: #573180; }
+.iconos-cabecera .icono { width: 27px; height: 27px; }
+
+.contenedor { max-width: 1570px; padding: 24px 28px 48px; }
+.introduccion { gap: 24px; align-items: center; margin-bottom: 29px; }
+.icono-camiseta { flex: 0 0 78px; height: 78px; border-radius: 20px; }
+.icono-camiseta .icono { width: 44px; height: 44px; }
+h1 { font-size: 36px; line-height: 1.1; margin: 0 0 10px; }
+.introduccion p { font-size: 16px; max-width: unset; line-height: 1.5; }
+
+.cuadricula { display: grid; grid-template-columns: minmax(340px, 440px) minmax(0, 1fr); gap: 22px; align-items: start; }
+.tarjeta { background: #fdfbff; border: 1px solid #eaddfb; border-radius: 22px; box-shadow: 0 5px 22px #51307b0a; }
+.tarjeta-carga { padding: 24px; }
+.tarjeta-carga h2 { font-size: 23px; margin-bottom: 27px; }
+.zona-carga { min-height: 318px; padding: 20px 14px; border: 2px dashed #c7a5f4; background: #fcf9ff; border-radius: 17px; }
+.zona-carga.arrastrando { background: #f0e5ff; border-color: var(--morado); }
+.carga-vacia { display: flex; flex-direction: column; align-items: center; }
+.icono-nube { width: 77px; height: 77px; color: #b38ae9; margin-bottom: 14px; }
+.carga-vacia strong { font-size: 16px; text-align: center; }
+.carga-vacia p { font-size: 14px; color: #67547d; margin: 10px 0 17px; text-align: center; }
+.carga-seleccionada { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 100%; margin-bottom: 14px; }
+.carga-seleccionada img { max-width: 100%; max-height: 165px; width: auto; height: auto; object-fit: contain; border-radius: 10px; }
+.nombre-archivo { font-size: 12px; color: #725e8c; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.boton { font-size: 15px; padding: 11px 18px; border-radius: 11px; }
+.boton .icono { width: 19px; height: 19px; }
+.boton-principal { background: #7846cd; color: white; }
+.boton-principal:hover, .boton-guardar:hover:not(:disabled) { background: #6936b7; }
+.zona-carga small { font-size: 12px; margin-top: 17px; text-align: center; color: #78618e; }
+.campo-categoria { margin-top: 26px; }
+.campo-categoria > label, .dialog-editar form > label { display: block; font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+
+/* =====================================
+   SELECTOR DE CATEGORÍAS - STYLEMATCH AI
+   ===================================== */
+
+.select-envoltorio {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Se conserva para enviar el dato a Django */
+.select-nativo {
+  display: none;
+}
+
+/* Todo el recuadro funciona como botón */
+.boton-select {
+  width: 100%;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 12px 16px;
+  border: 1px solid #dcc8f5;
+  border-radius: 14px;
+
+  background: #ffffff;
+  color: #504066;
+
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left;
+
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Hover */
+.boton-select:hover {
+  border-color: #a77ee1;
+  background: #fcf9ff;
+}
+
+/* Abierto */
+.boton-select[aria-expanded="true"] {
+  border-color: #7745c9;
+  background: #fcf9ff;
+  box-shadow: 0 0 0 3px rgba(119, 69, 201, 0.10);
+}
+
+/* Navegación con teclado */
+.boton-select:focus-visible,
+.opcion-categoria:focus-visible {
+  outline: 2px solid #7745c9;
+  outline-offset: 2px;
+}
+
+.boton-select > .icono {
+  width: 22px;
+  height: 22px;
+  color: #7745c9;
+  flex-shrink: 0;
+}
+
+.texto-select {
+  flex: 1;
+  min-width: 0;
+  color: #504066;
+}
+
+/* Flecha */
+.icono-flecha {
+  width: 19px !important;
+  height: 19px !important;
+  color: #5b3e84 !important;
+  transition: transform 0.2s ease;
+}
+
+.boton-select[aria-expanded="true"] .icono-flecha {
+  transform: rotate(180deg);
+}
+
+/* Menú desplegable */
+.lista-categorias {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  padding: 8px;
+  max-height: 310px;
+  overflow-y: auto;
+
+  background: #ffffff;
+  border: 1px solid #e5d5f8;
+  border-radius: 14px;
+
+  box-shadow: 0 12px 32px rgba(60, 30, 95, 0.14);
+}
+
+.lista-categorias[hidden] {
+  display: none !important;
+}
+
+/* Cada opción */
+.opcion-categoria {
+  width: 100%;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 11px 14px;
+  border: none;
+  border-radius: 9px;
+
+  background: transparent;
+  color: #4d356b;
+
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: left;
+
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+/* Al pasar el cursor */
+.opcion-categoria:hover,
+.opcion-categoria:focus-visible {
+  background: #f3eaff;
+  color: #6631ac;
+}
+
+/* Categoría seleccionada */
+.opcion-categoria.seleccionada {
+  background: #eee2ff;
+  color: #6531a8;
+  font-weight: 600;
+}
+
+.opcion-categoria.seleccionada::after {
+  content: "✓";
+  color: #7745c9;
+  font-weight: 700;
+  margin-left: 12px;
+}
+
+/* Barra de desplazamiento */
+.lista-categorias::-webkit-scrollbar {
+  width: 6px;
+}
+
+.lista-categorias::-webkit-scrollbar-thumb {
+  background: #d7c1f2;
+  border-radius: 10px;
+}
+
+.lista-categorias::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.boton-guardar { margin-top: 26px; background: #7947c6; min-height: 50px; font-size: 15px; }
+.boton-guardar:disabled { background: #9b79d0; opacity: .85; }
+
+.galeria { padding: 18px 20px 20px; min-width: 0; }
+.galeria-encabezado { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 20px; }
+.galeria-encabezado h2 { font-size: 24px; white-space: nowrap; margin: 0; }
+.galeria-encabezado h2 span { color: #746483; }
+.buscador { height: 48px; width: min(100%, 340px); background: white; border: 1px solid #ddc8fa; border-radius: 26px; display: flex; align-items: center; gap: 10px; padding: 0 16px; }
+.buscador .icono { width: 21px; height: 21px; color: #5c368b; }
+.buscador input { border: 0; outline: 0; min-width: 0; width: 100%; font: inherit; font-size: 14px; color: #4d3b62; background: transparent; }
+.buscador input::placeholder { color: #706082; }
+.filtros { display: flex; align-items: center; gap: 7px; margin-bottom: 18px; overflow-x: auto; scrollbar-width: thin; padding-bottom: 3px; }
+.filtro { display: inline-flex; align-items: center; gap: 7px; flex: 0 0 auto; min-height: 42px; padding: 0 13px; border-radius: 24px; border: 1px solid #e7d5ff; background: #f7f0ff; color: #4a2679; text-decoration: none; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.filtro:hover { background: #ecdcff; }
+.filtro .icono { width: 18px; height: 18px; }
+.filtro-activo, .filtro-activo:hover { color: white; background: #7745c9; border-color: #7745c9; }
+.filtro-activo .icono { color: white; }
+.prendas-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.prenda-card { min-width: 0; padding: 4px; background: #fff; border: 1px solid #e2d7f5; border-radius: 15px; box-shadow: 0 1px 2px #51307b09; }
+.prenda-foto { position: relative; background: #f4f1f5; border-radius: 11px; overflow: hidden; height: 148px; }
+.prenda-foto > img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; }
+.prenda-acciones { position: absolute; top: 5px; right: 5px; display: flex; gap: 5px; }
+.prenda-acciones form { margin: 0; }
+.accion-circular { width: 30px; height: 30px; display: grid; place-items: center; background: #fffdfefa; color: #4e2d79; border: 1px solid #e6d8fa; border-radius: 50%; cursor: pointer; box-shadow: 0 2px 5px #00000010; }
+.accion-circular:hover { background: #eee3ff; }
+.accion-circular .icono { width: 16px; height: 16px; }
+.accion-eliminar { color: #ef3655; }
+.accion-eliminar:hover { background: #fff0f3; }
+.prenda-info { padding: 8px 7px 7px; min-width: 0; }
+.prenda-info h3 { font-size: 14px; line-height: 1.3; margin: 0 0 7px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.etiqueta-categoria { display: inline-flex; align-items: center; gap: 6px; background: #f1e6ff; color: #61329a; font-size: 12px; border-radius: 20px; padding: 6px 10px; max-width: 100%; }
+.etiqueta-categoria .icono { width: 15px; height: 15px; }
+.galeria-vacia { min-height: 385px; border: 1px dashed #e0d2f3; background: #fbf8ff; border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px; text-align: center; padding: 20px; }
+.galeria-vacia .icono { width: 50px; height: 50px; color: #b99ade; margin-bottom: 9px; }
+.galeria-vacia strong { font-size: 17px; }
+.galeria-vacia p { font-size: 13px; color: #776587; margin: 0; }
+.enlace-limpiar { font-size: 13px; color: #713ec3; font-weight: 700; margin-top: 6px; }
+.paginacion { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 18px; }
+.paginacion a, .pagina-actual { width: 37px; height: 37px; border-radius: 50%; display: inline-grid; place-items: center; text-decoration: none; font-size: 14px; border: 1px solid #ddceef; background: #fff; color: #633b94; }
+.paginacion a .icono { width: 18px; height: 18px; }
+.paginacion a:hover { background: #f1e6ff; }
+.pagina-actual { color: #fff; background: #7947ca; border-color: #7947ca; }
+.paginacion-puntos { color: #6c5484; }
+.mensajes { margin: -5px 0 14px; }
+.mensaje { margin: 0 0 6px; padding: 9px 13px; font-size: 13px; }
+.mensaje-error { background: #fff0f3; border-color: #ecc1cf; color: #9b2446; }
+
+.dialog-editar { width: min(90vw, 430px); border: 1px solid #e8dafa; border-radius: 18px; padding: 25px; color: var(--texto); box-shadow: 0 18px 70px #2a124b35; }
+.dialog-editar::backdrop { background: #1a0f2f73; }
+.dialog-cabecera { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.dialog-cabecera h2 { font-size: 21px; margin: 0; }
+.dialog-cerrar { border: 0; background: transparent; cursor: pointer; color: #5a3b86; padding: 6px; }
+.dialog-cerrar .icono { width: 20px; height: 20px; }
+.dialog-editar form > label { margin-top: 17px; }
+.dialog-editar input, .dialog-editar select { width: 100%; font: inherit; font-size: 14px; border-radius: 10px; border: 1px solid #d9c9ed; background: #fff; padding: 12px; color: #42245d; }
+.dialog-pie { display: flex; justify-content: flex-end; gap: 8px; margin-top: 22px; }
+
+@media (min-width: 1100px) and (max-height: 820px) {
+  .barra { height: 64px; }
+  .contenedor { padding-top: 16px; }
+  .introduccion { margin-bottom: 17px; }
+  .icono-camiseta { flex-basis: 60px; height: 60px; }
+  .icono-camiseta .icono { width: 35px; height: 35px; }
+  h1 { font-size: 30px; margin-bottom: 4px; }
+  .introduccion p { font-size: 14px; }
+  .tarjeta-carga { padding: 18px; }
+  .tarjeta-carga h2 { font-size: 21px; margin-bottom: 14px; }
+  .zona-carga { min-height: 246px; padding: 13px; }
+  .icono-nube { width: 57px; height: 57px; margin-bottom: 9px; }
+  .carga-vacia p { margin: 5px 0 11px; }
+  .campo-categoria { margin-top: 16px; }
+  .boton-guardar { margin-top: 16px; }
+  .galeria { padding: 14px; }
+  .galeria-encabezado { margin-bottom: 13px; }
+  .galeria-encabezado h2 { font-size: 21px; }
+  .filtros { margin-bottom: 10px; }
+  .filtro { min-height: 36px; }
+  .prenda-foto { height: 118px; }
+  .prenda-info { padding: 5px 6px; }
+  .prenda-info h3 { font-size: 13px; margin-bottom: 5px; }
+  .etiqueta-categoria { font-size: 11px; padding: 5px 8px; }
+  .paginacion { margin-top: 10px; }
+  .galeria-vacia { min-height: 320px; }
+}
+
+@media (max-width: 1270px) and (min-width: 961px) {
+  .cuadricula { grid-template-columns: minmax(305px, 350px) minmax(0, 1fr); gap: 16px; }
+  .prendas-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .marca strong { font-size: 23px; }
+  .navegacion { gap: 10px; }
+  .navegacion span { font-size: 15px; }
+  .nav-activa { padding: 10px 12px; }
+}
+@media (max-width: 960px) {
+  .cuadricula { grid-template-columns: 1fr; }
+  .tarjeta-carga { max-width: none; }
+  .zona-carga { min-height: 220px; }
+  .prendas-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .nav-proxima { display: none !important; }
+  .marca strong { font-size: 22px; }
+}
+@media (max-width: 640px) {
+  .barra { height: 62px; padding: 0 14px; }
+  .marca { gap: 8px; }
+  .marca-icono { width: 42px; height: 42px; }
+  .marca-icono .icono { width: 29px; height: 29px; }
+  .marca strong { font-size: 18px; }
+  .separador, .navegacion, .iconos-cabecera { display: none; }
+  .contenedor { padding: 19px 14px 32px; }
+  .introduccion { align-items: flex-start; gap: 12px; margin-bottom: 17px; }
+  .icono-camiseta { flex: 0 0 55px; height: 55px; border-radius: 14px; }
+  .icono-camiseta .icono { width: 31px; height: 31px; }
+  h1 { font-size: 27px; margin-bottom: 5px; }
+  .introduccion p { font-size: 13px; }
+  .tarjeta-carga, .galeria { padding: 16px; }
+  .tarjeta-carga h2 { font-size: 20px; margin-bottom: 14px; }
+  .zona-carga { min-height: 240px; }
+  .galeria-encabezado { flex-direction: column; align-items: stretch; gap: 12px; }
+  .galeria-encabezado h2 { font-size: 21px; }
+  .buscador { width: 100%; }
+  .prendas-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .prenda-foto { height: 138px; }
+  .prenda-info h3 { font-size: 12px; }
+  .filtros { gap: 6px; }
+  .filtro { min-height: 37px; padding: 0 10px; }
+}
+@media (max-width: 360px) {
+  .prendas-grid { grid-template-columns: 1fr; }
+  .prenda-foto { height: 185px; }
+}
+
+
+/* ========================================
+   AJUSTE ICONO MI ARMARIO
+   ======================================== */
+
+.icono-camiseta .icono {
+  width: 28px;
+  height: 28px;
+}
+
+/* Ajuste para celulares */
+@media (max-width: 640px) {
+  .icono-camiseta .icono {
+    width: 25px;
+    height: 25px;
+  }
+}
