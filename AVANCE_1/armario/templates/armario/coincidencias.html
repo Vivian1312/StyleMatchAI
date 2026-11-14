@@ -1,4 +1,4 @@
-{% load static %}
+﻿{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -69,26 +69,47 @@
         <div id="panel-enlace" class="panel-origen oculto" role="tabpanel" aria-labelledby="pestana-enlace">
           <label class="etiqueta" for="url-consulta">Enlace de la prenda</label>
           <input type="url" id="url-consulta" class="campo-url" placeholder="https://tienda.com/producto-o-imagen" inputmode="url" autocomplete="url">
-          <p class="nota-url">Puedes pegar el enlace de una tienda. Si es una URL directa de imagen, mostraremos su vista previa. No extraemos productos de sitios web todav&iacute;a.</p>
+          <p class="nota-url">Puedes pegar el enlace de una tienda. Si es una URL directa de imagen, mostraremos su vista previa.</p>
           <div id="previa-enlace" class="previa-enlace oculto">
             <img id="vista-enlace" alt="Imagen externa enlazada" class="oculto">
             <div id="vista-enlace-generica" class="icono-enlace"><svg class="icono"><use href="#enlace"/></svg></div>
             <span id="texto-enlace">Enlace de referencia</span>
           </div>
         </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px;">
+          <div>
+            <label class="etiqueta" for="filtro-categoria" style="display:block; margin-bottom:4px;">Filtrar por categor&iacute;a</label>
+            <select id="filtro-categoria" class="campo-url" style="width:100%;">
+              <option value="">Todas las categor&iacute;as</option>
+              {% for codigo, nombre in categorias %}
+              <option value="{{ codigo }}">{{ nombre }}</option>
+              {% endfor %}
+              <option value="sin_categoria">Sin categor&iacute;a</option>
+            </select>
+          </div>
+          <div>
+            <label class="etiqueta" for="orden-similitud" style="display:block; margin-bottom:4px;">Ordenar similitud</label>
+            <select id="orden-similitud" class="campo-url" style="width:100%;">
+              <option value="desc">Mayor a menor (%)</option>
+              <option value="asc">Menor a mayor (%)</option>
+            </select>
+          </div>
+        </div>
+
         <p id="error-consulta" role="alert" class="mensaje-error oculto"></p>
         <button type="button" id="boton-buscar" class="boton boton-buscar"><svg class="icono"><use href="#estrella"/></svg>Buscar coincidencias</button>
-        <p class="nota-privacidad">Esta etapa presenta la interfaz. El c&aacute;lculo de similitud se conectar&aacute; cuando el modelo est&eacute; disponible.</p>
+        <p class="nota-privacidad">Motor Fashion-CLIP activo con filtro de categor&iacute;a y ordenamiento por similitud del coseno.</p>
       </section>
 
       <section class="tarjeta resultados" aria-labelledby="titulo-resultados">
         <h2 id="titulo-resultados">Resultados de coincidencia</h2>
-        <p class="subtitulo">Comparamos la prenda externa con las prendas de tu armario.</p>
+        <p class="subtitulo">Comparamos la prenda externa con las prendas filtradas de tu armario.</p>
         <div class="prenda-consultada" id="bloque-consultada">
           <div class="foto-consultada" id="foto-consultada"><svg class="icono"><use href="#imagen"/></svg></div>
           <div class="datos-consultada"><strong>Prenda consultada</strong><span id="nombre-consultada">Selecciona una imagen o pega un enlace</span><span class="etiqueta">Referencia externa</span></div>
         </div>
-        <div class="resultados-cabecera"><h3 id="cantidad-resultados">Coincidencias en tu armario</h3><span><svg class="icono"><use href="#info"/></svg>Hasta 3 resultados, cuando el modelo est&eacute; integrado</span></div>
+        <div class="resultados-cabecera"><h3 id="cantidad-resultados">Coincidencias en tu armario</h3><span><svg class="icono"><use href="#info"/></svg>Top 3 resultados filtrados</span></div>
         <div id="resultado-estado" class="estado-vacio" aria-live="polite">
           <svg class="icono"><use href="#percha"/></svg>
           <strong id="estado-titulo">A&uacute;n no hay una b&uacute;squeda realizada</strong>
@@ -99,16 +120,6 @@
         <div id="avisos-resultados" class="avisos-resultados oculto"></div>
       </section>
     </div>
-
-    <section class="demo-panel" aria-label="Estados de interfaz de prueba">
-      <div><strong>Vista de prueba de la interfaz</strong><p>Estas tarjetas son <b>simuladas</b>. Permiten revisar el dise&ntilde;o de 3, 1 o 0 coincidencias sin afirmar que la IA ha calculado resultados.</p></div>
-      <div class="demo-controles" role="group" aria-label="Cantidad de tarjetas de demostracion">
-        <button type="button" class="demo-btn" data-demo="3">3 coincidencias</button>
-        <button type="button" class="demo-btn" data-demo="1">1 coincidencia</button>
-        <button type="button" class="demo-btn" data-demo="0">Sin coincidencias</button>
-        <button type="button" class="demo-btn" data-demo="reset">Restablecer</button>
-      </div>
-    </section>
   </main>
 </body>
 </html>
