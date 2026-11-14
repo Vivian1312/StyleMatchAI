@@ -1,5 +1,6 @@
 
 from pathlib import Path
+import logging
 from mimetypes import guess_type
 
 from django.contrib import messages
@@ -14,6 +15,9 @@ from django.views.decorators.http import require_POST, require_safe
 
 from .forms import EditarPrendaForm, FotoArmarioForm
 from .models import FotoArmario
+from .servicio_vectores import vectorizar_prenda
+
+logger = logging.getLogger(__name__)
 
 
 # REGISTRO DE USUARIOS
@@ -70,10 +74,18 @@ def mi_armario(request):
 
             prenda.save()
 
-            messages.success(
-                request,
-                "Prenda guardada correctamente."
-            )
+            # Prototipo local: vectorizar al guardar. En producción, usar cola de tareas.
+            try:
+                vectorizar_prenda(prenda)
+            except Exception:
+                logger.exception("No se pudo vectorizar la prenda %s", prenda.pk)
+                messages.warning(
+                    request,
+                    "La prenda se guardó, pero su análisis visual quedó pendiente. "
+                    "Puedes procesarla con el comando vectorizar_armario."
+                )
+            else:
+                messages.success(request, "Prenda guardada y analizada correctamente.")
             return redirect("mi_armario")
 
 

@@ -7,26 +7,193 @@
   <title>Recomendaciones | StyleMatch AI</title>
   <link rel="stylesheet" href="{% static 'armario/css/recomendaciones.css' %}">
   <link rel="stylesheet" href="{% static 'armario/css/header.css' %}">
+  <script src="{% static 'armario/recomendaciones.js' %}" defer></script>
 </head>
 <body>
-  <svg class="simbolos" aria-hidden="true">
-    <symbol id="percha" viewBox="0 0 24 24"><path d="M9 6a3 3 0 1 1 6 0c0 1.4-1 2.1-3 3v2l9 7c1 .8.4 2-1 2H4c-1.4 0-2-1.2-1-2l9-7"/></symbol>
-    <symbol id="lupa" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
-    <symbol id="estrella" viewBox="0 0 24 24"><path d="m12 2 1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6L12 2ZM20 16l.7 2.3L23 19l-2.3.7L20 22l-.7-2.3L18 19l1.3-.7L20 16Z"/></symbol>
-    <symbol id="usuario" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 22v-2a8 8 0 0 1 16 0v2"/></symbol>
+  <!-- Iconos especificos de esta pagina. El header se comparte con otras vistas. -->
+  <svg class="reco-simbolos" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="reco-brillo" viewBox="0 0 24 24"><path d="m12 2 1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6L12 2ZM20 16l.7 2.3L23 19l-2.3.7L20 22l-.7-2.3L18 19l1.3-.7L20 16Z"/></symbol>
+    <symbol id="reco-percha" viewBox="0 0 24 24"><path d="M9 6a3 3 0 1 1 6 0c0 1.4-1 2.1-3 3v2l9 7c1 .8.4 2-1 2H4c-1.4 0-2-1.2-1-2l9-7"/></symbol>
+    <symbol id="reco-camisa" viewBox="0 0 24 24"><path d="m16 4 3 2 4 1-2 6-4-2v9H7v-9l-4 2-2-6 4-1 3-2a4 4 0 0 0 8 0Z"/></symbol>
+    <symbol id="reco-calzado" viewBox="0 0 24 24"><path d="M3 12c4 0 6 6 11 6h7v3H3a2 2 0 0 1-2-2v-5l2-2Zm0 0 2-5 5 5 4 2h6v4"/></symbol>
+    <symbol id="reco-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 11v6M12 7h.01"/></symbol>
+    <symbol id="reco-check" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></symbol>
+    <symbol id="reco-flecha" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
   </svg>
+
   {% include 'armario/header.html' %}
-  <main class="contenedor">
-    <div class="pagina-icono"><svg class="icono"><use href="#estrella"/></svg></div>
-    <h1>Recomendaciones de outfits</h1>
-    <p class="descripcion">Combina las prendas que ya tienes y encuentra nuevas formas de vestir con StyleMatch AI.</p>
-    <section class="proximamente" aria-labelledby="titulo-proximo">
-      <div class="destello"><svg class="icono"><use href="#estrella"/></svg></div>
-      <span class="etiqueta">Pr&oacute;xima etapa de la EDT</span>
-      <h2 id="titulo-proximo">Estamos preparando esta secci&oacute;n</h2>
-      <p>Aqu&iacute; se mostrar&aacute;n sugerencias de outfits basadas en tu propio armario. Esta p&aacute;gina ya es accesible desde el men&uacute;, pero todav&iacute;a no genera recomendaciones reales.</p>
-      <div class="acciones"><a href="{% url 'mi_armario' %}" class="boton boton-morado">Ir a Mi armario</a><a href="{% url 'coincidencias' %}" class="boton boton-claro">Buscar coincidencias</a></div>
+
+  <main class="reco-main">
+    <section class="reco-intro">
+      <span class="reco-titulo-icono" aria-hidden="true"><svg class="reco-ico"><use href="#reco-brillo"/></svg></span>
+      <div>
+        <h1>Recomendaciones de outfits</h1>
+        <p>Combina las prendas que ya tienes con reglas simples y descubre nuevas formas de vestir.</p>
+      </div>
     </section>
+
+    <div class="reco-layout">
+      <!-- Izquierda: seleccion de la prenda base a partir de la BD del usuario -->
+      <section class="reco-panel reco-panel-izquierdo" aria-labelledby="reco-titulo-elegir">
+        <div class="reco-panel-titulo">
+          <svg class="reco-ico reco-panel-icono" aria-hidden="true"><use href="#reco-percha"/></svg>
+          <div>
+            <h2 id="reco-titulo-elegir">Elige una prenda de tu armario</h2>
+            <p>Selecciona una prenda como base y genera combinaciones con las dem&aacute;s.</p>
+          </div>
+        </div>
+
+        {% if prendas %}
+          <form action="{% url 'recomendaciones' %}" method="get" id="reco-formulario">
+            <input type="hidden" id="reco-prenda-id" name="prenda" value="{{ seleccionada.pk|default:'' }}">
+
+            <div class="reco-filtro-campo">
+              <label for="reco-filtro">Categor&iacute;a:</label>
+              <div class="reco-select-box">
+                <select id="reco-filtro" aria-label="Filtrar prendas por categor&iacute;a">
+                  <option value="">Todas las categor&iacute;as</option>
+                  {% for codigo, etiqueta in categorias %}
+                    <option value="{{ codigo }}">{{ etiqueta }}</option>
+                  {% endfor %}
+                  <option value="sin_categoria">Otro</option>
+                </select>
+                <svg class="reco-ico" aria-hidden="true"><use href="#reco-flecha"/></svg>
+              </div>
+            </div>
+
+            <div class="reco-galeria" id="reco-galeria" aria-label="Selecciona una prenda">
+              {% for prenda in prendas %}
+                <button
+                  type="button"
+                  class="reco-prenda {% if seleccionada.pk == prenda.pk %}reco-prenda--activa{% endif %}"
+                  data-prenda-id="{{ prenda.pk }}"
+                  data-categoria="{{ prenda.categoria|default:'sin_categoria' }}"
+                  aria-pressed="{% if seleccionada.pk == prenda.pk %}true{% else %}false{% endif %}"
+                  title="Seleccionar {{ prenda.nombre|default:'Prenda' }}">
+                  <span class="reco-prenda-foto">
+                    <img src="{% url 'ver_imagen_privada' prenda.pk %}"
+                         alt="{{ prenda.nombre|default:'Prenda de mi armario' }}" loading="lazy">
+                    <span class="reco-prenda-check" aria-hidden="true"><svg class="reco-ico"><use href="#reco-check"/></svg></span>
+                  </span>
+                  <span class="reco-prenda-nombre">{{ prenda.nombre|default:'Prenda sin nombre' }}</span>
+                </button>
+              {% endfor %}
+            </div>
+            <p class="reco-filtro-vacio" id="reco-filtro-vacio" hidden>No tienes prendas en esta categor&iacute;a.</p>
+
+            <button type="submit" class="reco-boton-generar" id="reco-generar">
+              <svg class="reco-ico" aria-hidden="true"><use href="#reco-brillo"/></svg>
+              Generar outfits
+            </button>
+          </form>
+        {% else %}
+          <div class="reco-sin-prendas">
+            <svg class="reco-ico" aria-hidden="true"><use href="#reco-percha"/></svg>
+            <h3>Tu armario est&aacute; vac&iacute;o</h3>
+            <p>Agrega algunas prendas y sus categor&iacute;as para comenzar a crear looks.</p>
+            <a class="reco-boton-enlace" href="{% url 'mi_armario' %}">Ir a Mi armario</a>
+          </div>
+        {% endif %}
+      </section>
+
+      <!-- Derecha: resultado real de las reglas, nunca datos inventados -->
+      <section class="reco-panel reco-panel-derecho" aria-labelledby="reco-titulo-outfits">
+        <div class="reco-panel-titulo reco-panel-titulo--resultados">
+          <span class="reco-result-icono" aria-hidden="true"><svg class="reco-ico"><use href="#reco-brillo"/></svg></span>
+          <div>
+            <h2 id="reco-titulo-outfits">Outfits sugeridos ({{ outfits|length }})</h2>
+            <p>Combinaciones creadas a partir de las categor&iacute;as de tu armario.</p>
+          </div>
+        </div>
+
+        {% if outfits %}
+          <div class="reco-resultados" aria-live="polite">
+            {% for outfit in outfits %}
+              <article class="reco-outfit">
+                <div class="reco-outfit-info">
+                  <span class="reco-outfit-icono" aria-hidden="true"><svg class="reco-ico"><use href="#reco-camisa"/></svg></span>
+                  <div class="reco-outfit-titulos">
+                    <h3>{{ outfit.titulo }}</h3>
+                    <p>{{ outfit.descripcion }}</p>
+                    <div class="reco-etiquetas">
+                      {% for etiqueta in outfit.etiquetas %}
+                        <span>{{ etiqueta }}</span>
+                        {% if not forloop.last %}<b aria-hidden="true">+</b>{% endif %}
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="reco-outfit-prendas">
+                  {% for prenda in outfit.prendas %}
+                    <a class="reco-mini-prenda"
+                       href="{% url 'ver_imagen_privada' prenda.pk %}"
+                       target="_blank" rel="noopener"
+                       title="Ver foto de {{ prenda.nombre|default:'prenda' }}">
+                      <img src="{% url 'ver_imagen_privada' prenda.pk %}"
+                           alt="{{ prenda.nombre|default:'Prenda' }}" loading="lazy">
+                    </a>
+                  {% endfor %}
+                </div>
+
+                <details class="reco-detalles">
+                  <summary>Ver prendas</summary>
+                  <ul>
+                    {% for prenda in outfit.prendas %}
+                      <li><strong>{{ prenda.nombre|default:'Prenda sin nombre' }}</strong> <span>{{ prenda.get_categoria_display|default:'Otro' }}</span></li>
+                    {% endfor %}
+                  </ul>
+                  <a href="{% url 'mi_armario' %}">Abrir Mi armario</a>
+                </details>
+              </article>
+            {% endfor %}
+          </div>
+        {% elif not prendas %}
+          <div class="reco-estado" aria-live="polite">
+            <svg class="reco-ico" aria-hidden="true"><use href="#reco-percha"/></svg>
+            <h3>A&uacute;n no tienes prendas</h3>
+            <p>Tu armario est&aacute; vac&iacute;o. Sube fotograf&iacute;as para generar outfits.</p>
+          </div>
+        {% elif not busqueda_realizada %}
+          <div class="reco-estado" aria-live="polite">
+            <svg class="reco-ico" aria-hidden="true"><use href="#reco-brillo"/></svg>
+            <h3>Tu pr&oacute;ximo look comienza aqu&iacute;</h3>
+            <p>Elige una prenda del panel izquierdo y pulsa «Generar outfits».</p>
+          </div>
+        {% elif seleccion_invalida %}
+          <div class="reco-estado reco-estado--aviso" role="alert">
+            <svg class="reco-ico" aria-hidden="true"><use href="#reco-info"/></svg>
+            <h3>No encontramos esa prenda</h3>
+            <p>Selecciona una prenda de tu propio armario e int&eacute;ntalo nuevamente.</p>
+          </div>
+        {% elif not seleccionada.categoria %}
+          <div class="reco-estado reco-estado--aviso" aria-live="polite">
+            <svg class="reco-ico" aria-hidden="true"><use href="#reco-info"/></svg>
+            <h3>Esta prenda est&aacute; en «Otro»</h3>
+            <p>As&iacute;gnale una categor&iacute;a en «Mi armario» para poder combinarla con reglas.</p>
+            <a class="reco-boton-enlace" href="{% url 'mi_armario' %}">Editar categor&iacute;a</a>
+          </div>
+        {% else %}
+          <div class="reco-estado reco-estado--aviso" aria-live="polite">
+            <svg class="reco-ico" aria-hidden="true"><use href="#reco-percha"/></svg>
+            <h3>No se encontraron outfits completos</h3>
+            <p>Para esta prenda faltan algunas categor&iacute;as necesarias en tu armario.</p>
+            {% if faltantes %}
+              <p class="reco-faltantes"><strong>Agrega:</strong> {{ faltantes|join:', ' }}</p>
+            {% endif %}
+          </div>
+        {% endif %}
+      </section>
+    </div>
+
+    <aside class="reco-pie" aria-label="Informacion sobre las recomendaciones">
+      <span class="reco-pie-icono" aria-hidden="true"><svg class="reco-ico"><use href="#reco-info"/></svg></span>
+      <div>
+        <strong>Combinaciones basadas en reglas simples</strong>
+        <p>Solo se usan prendas de tu armario. Todav&iacute;a no se eval&uacute;an colores, ocasi&oacute;n ni compatibilidad visual.</p>
+      </div>
+      <a href="{% url 'mi_armario' %}">Ir a Mi armario</a>
+    </aside>
   </main>
 </body>
 </html>
