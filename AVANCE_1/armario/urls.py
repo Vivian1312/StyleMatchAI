@@ -1,4 +1,4 @@
-from django.urls import path
+﻿from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views_paginas
 from . import views
@@ -56,7 +56,6 @@ urlpatterns = [
         name="ver_imagen_privada"
     ),
 
-
     path(
         "coincidencias/",
         views_paginas.coincidencias,
@@ -64,9 +63,14 @@ urlpatterns = [
     ),
 
     path(
+        "coincidencias/buscar/",
+        views_paginas.buscar_similares_api,
+        name="buscar_similares_api"
+    ),
+
+    path(
         "recomendaciones/",
         views_paginas.recomendaciones,
         name="recomendaciones"
     ),
-
 ]
