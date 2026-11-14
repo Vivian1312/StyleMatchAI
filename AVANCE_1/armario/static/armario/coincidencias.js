@@ -1,4 +1,4 @@
-﻿// StyleMatch AI - Busqueda real de Top 3 coincidencias con Fashion-CLIP
+﻿// StyleMatch AI - Filtro de categoria y ordenamiento por similitud
 (() => {
   const $ = (id) => document.getElementById(id);
   const tabSubir = $("pestana-subir");
@@ -11,6 +11,8 @@
   const cargaSeleccionada = $("carga-seleccionada");
   const vistaArchivo = $("vista-archivo");
   const nombreArchivo = $("nombre-archivo");
+  const filtroCategoria = $("filtro-categoria");
+  const ordenSimilitud = $("orden-similitud");
   const errorConsulta = $("error-consulta");
   const fotoConsultada = $("foto-consultada");
   const nombreConsultada = $("nombre-consultada");
@@ -126,20 +128,22 @@
   }
 
   function restaurarResultados() {
-    mostrarEstado("Imagen lista para analizar", "Haz clic en 'Buscar coincidencias' para calcular el Top 3.");
+    mostrarEstado("Imagen lista para analizar", "Selecciona filtros si deseas y haz clic en 'Buscar coincidencias'.");
   }
 
   function renderResultadosReales(resultados) {
     estado.classList.add("oculto");
     tarjetasDemo.replaceChildren();
     if (!resultados || resultados.length === 0) {
-      mostrarEstado("No se encontraron coincidencias", "No hay prendas vectorizadas disponibles para comparar.");
+      mostrarEstado("Sin coincidencias para esa categoria", "No hay prendas registradas en la categoria seleccionada.");
       return;
     }
     tarjetasDemo.classList.remove("oculto");
     avisos.classList.remove("oculto");
-    avisos.textContent = "Resultados reales calculados con Fashion-CLIP y Similitud del Coseno (Top 3).";
-    cantidadResultados.textContent = `Top ${resultados.length} coincidencias mas similares`;
+    const textoOrden = ordenSimilitud.value === "asc" ? "menor a mayor similitud" : "mayor a menor similitud";
+    const textoCat = filtroCategoria.options[filtroCategoria.selectedIndex].text;
+    avisos.textContent = `Filtro: ${textoCat} · Orden: ${textoOrden} (Fashion-CLIP).`;
+    cantidadResultados.textContent = `Top ${resultados.length} coincidencias (${textoCat})`;
 
     resultados.forEach((dato, index) => {
       const claseColor = dato.porcentaje >= 85 ? "" : dato.porcentaje >= 70 ? "medio" : "bajo";
@@ -177,19 +181,21 @@
     });
   }
 
-  botonBuscar.addEventListener("click", async () => {
+  async function ejecutarBusqueda() {
     limpiarError();
     if (modo !== "archivo" || !archivoElegido) {
-      error("Selecciona una imagen JPG o PNG en la pestana 'Subir imagen' para calcular el Top 3.");
+      error("Selecciona una imagen JPG o PNG en la pestana 'Subir imagen'.");
       return;
     }
 
     botonBuscar.disabled = true;
-    mostrarEstado("Analizando prenda con Fashion-CLIP...", "Extrayendo vector y calculando similitud del coseno contra la base de datos.");
+    mostrarEstado("Filtrando y calculando similitud...", "Aplicando filtro de categoria y ordenamiento con Fashion-CLIP.");
 
     try {
       const formData = new FormData();
       formData.append("imagen", archivoElegido);
+      formData.append("categoria", filtroCategoria.value);
+      formData.append("orden", ordenSimilitud.value);
 
       const resp = await fetch("/coincidencias/buscar/", {
         method: "POST",
@@ -210,5 +216,9 @@
     } finally {
       botonBuscar.disabled = false;
     }
-  });
+  }
+
+  botonBuscar.addEventListener("click", ejecutarBusqueda);
+  filtroCategoria.addEventListener("change", () => { if (archivoElegido) ejecutarBusqueda(); });
+  ordenSimilitud.addEventListener("change", () => { if (archivoElegido) ejecutarBusqueda(); });
 })();

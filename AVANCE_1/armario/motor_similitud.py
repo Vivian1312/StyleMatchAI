@@ -30,10 +30,9 @@ def extraer_vector_imagen(archivo_imagen):
     return features.cpu().numpy().flatten().astype(np.float32)
 
 
-def buscar_top_3_similares(archivo_imagen, usuario=None):
+def buscar_top_3_similares(archivo_imagen, usuario=None, categoria="", orden="desc"):
     vec_consulta = extraer_vector_imagen(archivo_imagen)
 
-    # Busca prendas con vector del usuario actual; si no tiene, usa el dataset vectorizado
     candidatas = FotoArmario.objects.exclude(
         vector_caracteristicas__isnull=True
     ).exclude(vector_caracteristicas="")
@@ -43,8 +42,20 @@ def buscar_top_3_similares(archivo_imagen, usuario=None):
         if propias.exists():
             candidatas = propias
 
+    # 1. Filtrar primero por categoria
+    categorias_validas = {codigo for codigo, _ in FotoArmario.CATEGORIAS}
+    if categoria in categorias_validas:
+        candidatas = candidatas.filter(categoria=categoria)
+    elif categoria == "sin_categoria":
+        candidatas = candidatas.filter(categoria="")
+
+    # 2. Calcular similitud del coseno descartando vectores identicos duplicados
     resultados = []
+    vectores_vistos = set()
+
     for prenda in candidatas:
+        if prenda.vector_caracteristicas in vectores_vistos:
+            continue
         try:
             vec_prenda = np.array(
                 ast.literal_eval(prenda.vector_caracteristicas),
@@ -52,6 +63,7 @@ def buscar_top_3_similares(archivo_imagen, usuario=None):
             )
             if vec_prenda.shape != vec_consulta.shape:
                 continue
+            vectores_vistos.add(prenda.vector_caracteristicas)
             similitud = float(np.dot(vec_consulta, vec_prenda))
             porcentaje = max(0, min(100, round(similitud * 100, 1)))
             resultados.append(
@@ -66,5 +78,12 @@ def buscar_top_3_similares(archivo_imagen, usuario=None):
         except Exception:
             continue
 
+    # 3. Obtener siempre el Top 3 de mayor similitud primero
     resultados.sort(key=lambda x: x["porcentaje"], reverse=True)
-    return resultados[:3]
+    top_3 = resultados[:3]
+
+    # 4. Ordenar ese Top 3 segun la preferencia del usuario (desc o asc)
+    if orden == "asc":
+        top_3.sort(key=lambda x: x["porcentaje"], reverse=False)
+
+    return top_3
