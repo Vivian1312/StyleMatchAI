@@ -1,4 +1,4 @@
-﻿// StyleMatch AI - Filtro de categoria y ordenamiento por similitud
+﻿// StyleMatch AI - Consultas robustas (archivo/URL) y metricas de rendimiento
 (() => {
   const $ = (id) => document.getElementById(id);
   const tabSubir = $("pestana-subir");
@@ -11,6 +11,11 @@
   const cargaSeleccionada = $("carga-seleccionada");
   const vistaArchivo = $("vista-archivo");
   const nombreArchivo = $("nombre-archivo");
+  const urlConsulta = $("url-consulta");
+  const previaEnlace = $("previa-enlace");
+  const vistaEnlace = $("vista-enlace");
+  const vistaEnlaceGenerica = $("vista-enlace-generica");
+  const textoEnlace = $("texto-enlace");
   const filtroCategoria = $("filtro-categoria");
   const ordenSimilitud = $("orden-similitud");
   const errorConsulta = $("error-consulta");
@@ -64,6 +69,9 @@
       const img = document.createElement("img");
       img.src = src;
       img.alt = "Fotografia de la prenda consultada";
+      img.onerror = () => {
+        fotoConsultada.textContent = "URL";
+      };
       fotoConsultada.append(img);
     } else {
       fotoConsultada.textContent = "URL";
@@ -102,6 +110,30 @@
     cargarArchivo(file);
   });
 
+  if (urlConsulta) {
+    urlConsulta.addEventListener("input", () => {
+      limpiarError();
+      const val = urlConsulta.value.trim();
+      if (!val) {
+        previaEnlace.classList.add("oculto");
+        return;
+      }
+      try {
+        const u = new URL(val);
+        previaEnlace.classList.remove("oculto");
+        textoEnlace.textContent = u.hostname;
+        vistaEnlace.src = u.href;
+        vistaEnlace.classList.remove("oculto");
+        vistaEnlaceGenerica.classList.add("oculto");
+        vistaEnlace.onerror = () => {
+          vistaEnlace.classList.add("oculto");
+          vistaEnlaceGenerica.classList.remove("oculto");
+        };
+        mostrarConsultada(u.href, u.hostname);
+      } catch (_) {}
+    });
+  }
+
   ["dragenter", "dragover"].forEach((tipo) => zonaCarga.addEventListener(tipo, (e) => {
     e.preventDefault();
     zonaCarga.classList.add("arrastrando");
@@ -131,7 +163,7 @@
     mostrarEstado("Imagen lista para analizar", "Selecciona filtros si deseas y haz clic en 'Buscar coincidencias'.");
   }
 
-  function renderResultadosReales(resultados) {
+  function renderResultadosReales(resultados, tiempoMs) {
     estado.classList.add("oculto");
     tarjetasDemo.replaceChildren();
     if (!resultados || resultados.length === 0) {
@@ -142,7 +174,8 @@
     avisos.classList.remove("oculto");
     const textoOrden = ordenSimilitud.value === "asc" ? "menor a mayor similitud" : "mayor a menor similitud";
     const textoCat = filtroCategoria.options[filtroCategoria.selectedIndex].text;
-    avisos.textContent = `Filtro: ${textoCat} · Orden: ${textoOrden} (Fashion-CLIP).`;
+    const metricaTiempo = typeof tiempoMs === "number" ? ` · Tiempo: ${tiempoMs} ms` : "";
+    avisos.textContent = `Filtro: ${textoCat} · Orden: ${textoOrden}${metricaTiempo}`;
     cantidadResultados.textContent = `Top ${resultados.length} coincidencias (${textoCat})`;
 
     resultados.forEach((dato, index) => {
@@ -158,6 +191,9 @@
       img.style.width = "100%";
       img.style.height = "100%";
       img.style.objectFit = "cover";
+      img.onerror = () => {
+        fotoDiv.textContent = "Vista previa no disponible";
+      };
       fotoDiv.append(img);
 
       const title = document.createElement("h4");
@@ -183,20 +219,30 @@
 
   async function ejecutarBusqueda() {
     limpiarError();
-    if (modo !== "archivo" || !archivoElegido) {
-      error("Selecciona una imagen JPG o PNG en la pestana 'Subir imagen'.");
-      return;
+    const formData = new FormData();
+
+    if (modo === "archivo") {
+      if (!archivoElegido) {
+        error("Selecciona una imagen JPG o PNG en la pestana 'Subir imagen'.");
+        return;
+      }
+      formData.append("imagen", archivoElegido);
+    } else {
+      const urlVal = urlConsulta ? urlConsulta.value.trim() : "";
+      if (!urlVal) {
+        error("Pega el enlace directo (http:// o https://) de una imagen.");
+        return;
+      }
+      formData.append("url_imagen", urlVal);
     }
 
+    formData.append("categoria", filtroCategoria.value);
+    formData.append("orden", ordenSimilitud.value);
+
     botonBuscar.disabled = true;
-    mostrarEstado("Filtrando y calculando similitud...", "Aplicando filtro de categoria y ordenamiento con Fashion-CLIP.");
+    mostrarEstado("Analizando consulta...", "Ejecutando busqueda optimizada con Fashion-CLIP.");
 
     try {
-      const formData = new FormData();
-      formData.append("imagen", archivoElegido);
-      formData.append("categoria", filtroCategoria.value);
-      formData.append("orden", ordenSimilitud.value);
-
       const resp = await fetch("/coincidencias/buscar/", {
         method: "POST",
         headers: { "X-CSRFToken": obtenerCSRF() },
@@ -205,10 +251,10 @@
       const data = await resp.json();
 
       if (!resp.ok) {
-        error(data.error || "Error al calcular similitud.");
+        error(data.error || "Error al procesar la consulta.");
         restaurarResultados();
       } else {
-        renderResultadosReales(data.resultados);
+        renderResultadosReales(data.resultados, data.tiempo_ms);
       }
     } catch (err) {
       error("Error de conexion con el servidor Django.");
@@ -219,6 +265,12 @@
   }
 
   botonBuscar.addEventListener("click", ejecutarBusqueda);
-  filtroCategoria.addEventListener("change", () => { if (archivoElegido) ejecutarBusqueda(); });
-  ordenSimilitud.addEventListener("change", () => { if (archivoElegido) ejecutarBusqueda(); });
+  filtroCategoria.addEventListener("change", () => {
+    const tieneEntrada = (modo === "archivo" && archivoElegido) || (modo === "enlace" && urlConsulta && urlConsulta.value.trim());
+    if (tieneEntrada) ejecutarBusqueda();
+  });
+  ordenSimilitud.addEventListener("change", () => {
+    const tieneEntrada = (modo === "archivo" && archivoElegido) || (modo === "enlace" && urlConsulta && urlConsulta.value.trim());
+    if (tieneEntrada) ejecutarBusqueda();
+  });
 })();
