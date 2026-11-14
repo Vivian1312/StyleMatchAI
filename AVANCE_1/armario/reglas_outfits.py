@@ -111,3 +111,21 @@ def categorias_faltantes(prendas, base):
         return []
     faltantes = min(alternativas, key=len)
     return [CATEGORIAS_NOMBRES[c] for c in faltantes]
+
+
+def generar_outfits_prenda_externa(prendas, categoria, max_resultados=3):
+    """Reutiliza las reglas con una prenda virtual que NO se guarda en BD.
+
+    -1 es una PK reservada para la simulacion, sin colision con PKs Django.
+    Los demas elementos del look son objetos reales del armario del usuario.
+    """
+    from types import SimpleNamespace
+
+    if categoria not in CATEGORIAS_NOMBRES:
+        return []
+    externa = SimpleNamespace(
+        pk=-1,
+        categoria=categoria,
+        nombre="Prenda externa que quieres comprar",
+    )
+    return generar_outfits([*prendas, externa], externa, max_resultados=max_resultados)
