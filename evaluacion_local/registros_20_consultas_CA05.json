@@ -1,0 +1,602 @@
+[
+  {
+    "id_consulta": "C01",
+    "categoria_consulta": "camisa",
+    "dificultad": "facil",
+    "descripcion_caso": "Camisa o camiseta lisa de color basico; en el closet hay una casi igual",
+    "imagen_consulta": "Q01",
+    "prenda_referencia_dataset": "P001",
+    "top3": [
+      {
+        "codigo": "P002",
+        "similitud_coseno": 0.8574
+      },
+      {
+        "codigo": "P007",
+        "similitud_coseno": 0.8252
+      },
+      {
+        "codigo": "P006",
+        "similitud_coseno": 0.8249
+      }
+    ],
+    "p1_pertinente": "no",
+    "p2_pertinente": "sí",
+    "p3_pertinente": "no",
+    "resultado": "sí",
+    "evaluador": "E1",
+    "segunda_evaluacion": "sí",
+    "observaciones": "P007 coincide en categoría, color negro y corte manga corta.",
+    "foto_corresponde_categoria": "sí"
+  },
+  {
+    "id_consulta": "C02",
+    "categoria_consulta": "camisa",
+    "dificultad": "media",
+    "descripcion_caso": "Camisa del mismo tipo que otra del closet pero de color distinto",
+    "imagen_consulta": "Q02",
+    "prenda_referencia_dataset": "P002",
+    "top3": [
+      {
+        "codigo": "P001",
+        "similitud_coseno": 0.8574
+      },
+      {
+        "codigo": "P006",
+        "similitud_coseno": 0.8311
+      },
+      {
+        "codigo": "P013",
+        "similitud_coseno": 0.8255
+      }
+    ],
+    "p1_pertinente": "no",
+    "p2_pertinente": "no",
+    "p3_pertinente": "sí",
+    "resultado": "sí",
+    "evaluador": "E1",
+    "segunda_evaluacion": "sí",
+    "observaciones": "P013 coincide en categoría camiseta, color blanco y forma.",
+    "foto_corresponde_categoria": "sí"
+  },
+  {
+    "id_consulta": "C03",
+    "categoria_consulta": "camisa",
+    "dificultad": "media",
+    "descripcion_caso": "Camiseta con estampado; en el closet solo hay camisetas lisas",
+    "imagen_consulta": "Q03",
+    "prenda_referencia_dataset": "P003",
+    "top3": [
+      {
+        "codigo": "P004",
+        "similitud_coseno": 0.8608
+      },
+      {
+        "codigo": "P018",
+        "similitud_coseno": 0.8527
+      },
+      {
+        "codigo": "P049",
+        "similitud_coseno": 0.8101
+      }
+    ],
+    "p1_pertinente": "no",
+    "p2_pertinente": "no",
+    "p3_pertinente": "no",
+    "resultado": "no",
+    "evaluador": "E1",
+    "segunda_evaluacion": "no",
+    "observaciones": "P003 es jean gris, no camisa; categoría de consulta desalineada.",
+    "foto_corresponde_categoria": "no"
+  },
+  {
+    "id_consulta": "C04",
+    "categoria_consulta": "camisa",
+    "dificultad": "dificil",
+    "descripcion_caso": "Camisa de un estilo que no existe en el closet",
+    "imagen_consulta": "Q04",
+    "prenda_referencia_dataset": "P004",
+    "top3": [
+      {
+        "codigo": "P003",
+        "similitud_coseno": 0.8608
+      },
+      {
+        "codigo": "P016",
+        "similitud_coseno": 0.8086
+      },
+      {
+        "codigo": "P018",
+        "similitud_coseno": 0.8013
+      }
+    ],
+    "p1_pertinente": "no",
+    "p2_pertinente": "no",
+    "p3_pertinente": "no",
+    "resultado": "no",
+    "evaluador": "E1",
+    "segunda_evaluacion": "",
+    "observaciones": "P004 es jean negro, no camisa; categoría de consulta desalineada.",
+    "foto_corresponde_categoria": "no"
+  },
+  {
+    "id_consulta": "C05",
+    "categoria_consulta": "pantalon",
+    "dificultad": "facil",
+    "descripcion_caso": "Jean azul; en el closet hay un jean azul de corte similar",
+    "imagen_consulta": "Q05",
+    "prenda_referencia_dataset": "P005",
+    "top3": [
+      {
+        "codigo": "P021",
+        "similitud_coseno": 0.7213
+      },
+      {
+        "codigo": "P042",
+        "similitud_coseno": 0.7199
+      },
+      {
+        "codigo": "P004",
+        "similitud_coseno": 0.7132
+      }
+    ],
+    "p1_pertinente": "no",
+    "p2_pertinente": "no",
+    "p3_pertinente": "no",
+    "resultado": "no",
+    "evaluador": "E1",
+    "segunda_evaluacion": "",
+    "observaciones": "P005 es calzado deportivo, no pantalón.",
+    "foto_corresponde_categoria": "no"
+  },
+  {
+    "id_consulta": "C06",
+    "categoria_consulta": "pantalon",
+    "dificultad": "media",
+    "descripcion_caso": "Pantalon de vestir; en el closet hay uno del mismo tipo en otro color",
+    "imagen_consulta": "Q06",
+    "prenda_referencia_dataset": "P006",
+    "top3": [
+      {
+        "codigo": "P002",
+        "similitud_coseno": 0.8311
+      },
+      {
+        "codigo": "P001",
+        "similitud_coseno": 0.8249
+      },
+      {
+        "codigo": "P008",
+        "similitud_coseno": 0.8199
+      }
+    ],
+    "p1_pertinente": "no",
+    "p2_pertinente": "no",
+    "p3_pertinente": "no",
+    "resultado": "no",
+    "evaluador": "E1",
+    "segunda_evaluacion": "",
+    "observaciones": "P006 es camiseta azul, no pantalón.",
+    "foto_corresponde_categoria": "no"
+  },
+  {
+    "id_consulta": "C07",
+    "categoria_consulta": "pantalon",
+    "dificultad": "media",
+    "descripcion_caso": "Jean de corte distinto al de los jeans del closet",
+    "imagen_consulta": "Q07",
+    "prenda_referencia_dataset": "P007",
+    "top3": [
+      {
+        "codigo": "P001",
+        "similitud_coseno": 0.8252
+      },
+      {
+        "codigo": "P021",
+        "similitud_coseno": 0.8171
+      },
+      {
+        "codigo": "P013",
+        "similitud_coseno": 0.8137
+      }
+    ],
+    "p1_pertinente": "no",
+    "p2_pertinente": "no",
+    "p3_pertinente": "no",
+    "resultado": "no",
+    "evaluador": "E1",
+    "segunda_evaluacion": "",
+    "observaciones": "P007 es camiseta negra, no pantalón.",
+    "foto_corresponde_categoria": "no"
+  },
+  {
+    "id_consulta": "C08",
+    "categoria_consulta": "pantalon",
+    "dificultad": "dificil",
+    "descripcion_caso": "Pantalon de un tipo sin equivalente en el closet",
+    "imagen_consulta": "Q08",
+    "prenda_referencia_dataset": "P008",
+    "top3": [
+      {
+        "codigo": "P006",
+        "similitud_coseno": 0.8199
+      },
+      {
+        "codigo": "P002",
+        "similitud_coseno": 0.808
+      },
+      {
+        "codigo": "P010",
+        "similitud_coseno": 0.8042
+      }
+    ],
+    "p1_pertinente": "no",
+    "p2_pertinente": "no",
+    "p3_pertinente": "no",
+    "resultado": "no",
+    "evaluador": "E1",
+    "segunda_evaluacion": "",
+    "observaciones": "P008 es buzo manga larga, no pantalón.",
+    "foto_corresponde_categoria": "no"
+  },
+  {
+    "id_consulta": "C09",
+    "categoria_consulta": "chaqueta_buzo",
+    "dificultad": "facil",
+    "descripcion_caso": "Buzo con capota de color basico; hay uno similar en el closet",
+    "imagen_consulta": "Q09",
+    "prenda_referencia_dataset": "P009",
+    "top3": [
+      {
+        "codigo": "P007",
+        "similitud_coseno": 0.8047
+      },
+      {
+        "codigo": "P013",
+        "similitud_coseno": 0.7993
+      },
+      {
+        "codigo": "P001",
+        "similitud_coseno": 0.7923
+      }
+    ],
+    "p1_pertinente": "no",
+    "p2_pertinente": "no",
+    "p3_pertinente": "no",
+    "resultado": "no",
+    "evaluador": "E1",
+    "segunda_evaluacion": "",
+    "observaciones": "P009 es camiseta manga corta, no chaqueta/buzo.",
+    "foto_corresponde_categoria": "no"
+  },
+  {
+    "id_consulta": "C10",
+    "categoria_consulta": "chaqueta_buzo",
+    "dificultad": "media",
+    "descripcion_caso": "Chaqueta del mismo tipo que otra del closet en otro color",
+    "imagen_consulta": "Q10",
+    "prenda_referencia_dataset": "P010",
+    "top3": [
+      {
+        "codigo": "P008",
+        "similitud_coseno": 0.8042
+      },
+      {
+        "codigo": "P006",
+        "similitud_coseno": 0.8032
+      },
+      {
+        "codigo": "P002",
+        "similitud_coseno": 0.7757
+      }
+    ],
+    "p1_pertinente": "sí",
+    "p2_pertinente": "no",
+    "p3_pertinente": "no",
+    "resultado": "sí",
+    "evaluador": "E1",
+    "segunda_evaluacion": "sí",
+    "observaciones": "P010 y P008 son buzos manga larga de corte similar.",
+    "foto_corresponde_categoria": "sí"
+  },
+  {
+    "id_consulta": "C11",
+    "categoria_consulta": "chaqueta_buzo",
+    "dificultad": "media",
+    "descripcion_caso": "Buzo sin capota; en el closet solo hay buzos con capota",
+    "imagen_consulta": "Q11",
+    "prenda_referencia_dataset": "P011",
+    "top3": [
+      {
+        "codigo": "P012",
+        "similitud_coseno": 0.8455
+      },
+      {
+        "codigo": "P013",
+        "similitud_coseno": 0.7153
+      },
+      {
+        "codigo": "P048",
+        "similitud_coseno": 0.7108
+      }
+    ],
+    "p1_pertinente": "no",
+    "p2_pertinente": "no",
+    "p3_pertinente": "no",
+    "resultado": "no",
+    "evaluador": "E1",
+    "segunda_evaluacion": "",
+    "observaciones": "P011 es calzado (tenis), no buzo.",
+    "foto_corresponde_categoria": "no"
+  },
+  {
+    "id_consulta": "C12",
+    "categoria_consulta": "chaqueta_buzo",
+    "dificultad": "dificil",
+    "descripcion_caso": "Chaqueta formal; el closet tiene solo prendas informales",
+    "imagen_consulta": "Q12",
+    "prenda_referencia_dataset": "P012",
+    "top3": [
+      {
+        "codigo": "P011",
+        "similitud_coseno": 0.8455
+      },
+      {
+        "codigo": "P013",
+        "similitud_coseno": 0.7052
+      },
+      {
+        "codigo": "P048",
+        "similitud_coseno": 0.7012
+      }
+    ],
+    "p1_pertinente": "no",
+    "p2_pertinente": "no",
+    "p3_pertinente": "no",
+    "resultado": "no",
+    "evaluador": "E1",
+    "segunda_evaluacion": "",
+    "observaciones": "P012 es calzado (tenis), no chaqueta formal.",
+    "foto_corresponde_categoria": "no"
+  },
+  {
+    "id_consulta": "C13",
+    "categoria_consulta": "calzado",
+    "dificultad": "facil",
+    "descripcion_caso": "Tenis blancos; en el closet hay tenis blancos parecidos",
+    "imagen_consulta": "Q13",
+    "prenda_referencia_dataset": "P013",
+    "top3": [
+      {
+        "codigo": "P002",
+        "similitud_coseno": 0.8255
+      },
+      {
+        "codigo": "P001",
+        "similitud_coseno": 0.8209
+      },
+      {
+        "codigo": "P021",
+        "similitud_coseno": 0.8203
+      }
+    ],
+    "p1_pertinente": "no",
+    "p2_pertinente": "no",
+    "p3_pertinente": "no",
+    "resultado": "no",
+    "evaluador": "E1",
+    "segunda_evaluacion": "",
+    "observaciones": "P013 es camiseta blanca, no calzado.",
+    "foto_corresponde_categoria": "no"
+  },
+  {
+    "id_consulta": "C14",
+    "categoria_consulta": "calzado",
+    "dificultad": "media",
+    "descripcion_caso": "Tenis del mismo estilo que otros del closet en otro color",
+    "imagen_consulta": "Q14",
+    "prenda_referencia_dataset": "P014",
+    "top3": [
+      {
+        "codigo": "P029",
+        "similitud_coseno": 0.7949
+      },
+      {
+        "codigo": "P031",
+        "similitud_coseno": 0.791
+      },
+      {
+        "codigo": "P015",
+        "similitud_coseno": 0.7906
+      }
+    ],
+    "p1_pertinente": "no",
+    "p2_pertinente": "no",
+    "p3_pertinente": "no",
+    "resultado": "no",
+    "evaluador": "E1",
+    "segunda_evaluacion": "",
+    "observaciones": "P014 es suéter tejido, no calzado.",
+    "foto_corresponde_categoria": "no"
+  },
+  {
+    "id_consulta": "C15",
+    "categoria_consulta": "calzado",
+    "dificultad": "media",
+    "descripcion_caso": "Zapato casual; en el closet hay zapatos casuales de otro material",
+    "imagen_consulta": "Q15",
+    "prenda_referencia_dataset": "P015",
+    "top3": [
+      {
+        "codigo": "P014",
+        "similitud_coseno": 0.7906
+      },
+      {
+        "codigo": "P030",
+        "similitud_coseno": 0.7788
+      },
+      {
+        "codigo": "P031",
+        "similitud_coseno": 0.7496
+      }
+    ],
+    "p1_pertinente": "no",
+    "p2_pertinente": "no",
+    "p3_pertinente": "no",
+    "resultado": "no",
+    "evaluador": "E1",
+    "segunda_evaluacion": "",
+    "observaciones": "P015 es blusa rosada, no calzado.",
+    "foto_corresponde_categoria": "no"
+  },
+  {
+    "id_consulta": "C16",
+    "categoria_consulta": "calzado",
+    "dificultad": "dificil",
+    "descripcion_caso": "Botas; el closet no tiene botas",
+    "imagen_consulta": "Q16",
+    "prenda_referencia_dataset": "P016",
+    "top3": [
+      {
+        "codigo": "P004",
+        "similitud_coseno": 0.8086
+      },
+      {
+        "codigo": "P018",
+        "similitud_coseno": 0.7809
+      },
+      {
+        "codigo": "P025",
+        "similitud_coseno": 0.7711
+      }
+    ],
+    "p1_pertinente": "no",
+    "p2_pertinente": "no",
+    "p3_pertinente": "no",
+    "resultado": "no",
+    "evaluador": "E1",
+    "segunda_evaluacion": "",
+    "observaciones": "P016 es pantalón terracota, no botas.",
+    "foto_corresponde_categoria": "no"
+  },
+  {
+    "id_consulta": "C17",
+    "categoria_consulta": "otros",
+    "dificultad": "facil",
+    "descripcion_caso": "Vestido de color y largo similares a uno del closet",
+    "imagen_consulta": "Q17",
+    "prenda_referencia_dataset": "P017",
+    "top3": [
+      {
+        "codigo": "P029",
+        "similitud_coseno": 0.7515
+      },
+      {
+        "codigo": "P031",
+        "similitud_coseno": 0.7419
+      },
+      {
+        "codigo": "P027",
+        "similitud_coseno": 0.7362
+      }
+    ],
+    "p1_pertinente": "no",
+    "p2_pertinente": "no",
+    "p3_pertinente": "no",
+    "resultado": "no",
+    "evaluador": "E1",
+    "segunda_evaluacion": "no",
+    "observaciones": "P017 es prenda superior terracota; Top-3 no coincide en forma/color.",
+    "foto_corresponde_categoria": "sí"
+  },
+  {
+    "id_consulta": "C18",
+    "categoria_consulta": "otros",
+    "dificultad": "media",
+    "descripcion_caso": "Vestido del mismo largo que uno del closet pero de otro color",
+    "imagen_consulta": "Q18",
+    "prenda_referencia_dataset": "P018",
+    "top3": [
+      {
+        "codigo": "P003",
+        "similitud_coseno": 0.8527
+      },
+      {
+        "codigo": "P020",
+        "similitud_coseno": 0.806
+      },
+      {
+        "codigo": "P049",
+        "similitud_coseno": 0.8052
+      }
+    ],
+    "p1_pertinente": "no",
+    "p2_pertinente": "no",
+    "p3_pertinente": "no",
+    "resultado": "no",
+    "evaluador": "E1",
+    "segunda_evaluacion": "",
+    "observaciones": "P018 es jean azul, no vestido (categoría otros).",
+    "foto_corresponde_categoria": "no"
+  },
+  {
+    "id_consulta": "C19",
+    "categoria_consulta": "otros",
+    "dificultad": "media",
+    "descripcion_caso": "Accesorio (bolso o gorra) similar en forma a uno del closet",
+    "imagen_consulta": "Q19",
+    "prenda_referencia_dataset": "P019",
+    "top3": [
+      {
+        "codigo": "P004",
+        "similitud_coseno": 0.7833
+      },
+      {
+        "codigo": "P025",
+        "similitud_coseno": 0.752
+      },
+      {
+        "codigo": "P003",
+        "similitud_coseno": 0.7508
+      }
+    ],
+    "p1_pertinente": "no",
+    "p2_pertinente": "no",
+    "p3_pertinente": "no",
+    "resultado": "no",
+    "evaluador": "E1",
+    "segunda_evaluacion": "",
+    "observaciones": "P019 es pantalón café, no accesorio.",
+    "foto_corresponde_categoria": "no"
+  },
+  {
+    "id_consulta": "C20",
+    "categoria_consulta": "otros",
+    "dificultad": "dificil",
+    "descripcion_caso": "Accesorio sin equivalente en el closet",
+    "imagen_consulta": "Q20",
+    "prenda_referencia_dataset": "P020",
+    "top3": [
+      {
+        "codigo": "P018",
+        "similitud_coseno": 0.806
+      },
+      {
+        "codigo": "P003",
+        "similitud_coseno": 0.8013
+      },
+      {
+        "codigo": "P004",
+        "similitud_coseno": 0.7922
+      }
+    ],
+    "p1_pertinente": "no",
+    "p2_pertinente": "no",
+    "p3_pertinente": "no",
+    "resultado": "no",
+    "evaluador": "E1",
+    "segunda_evaluacion": "",
+    "observaciones": "P020 es jean cargo azul, no accesorio.",
+    "foto_corresponde_categoria": "no"
+  }
+]

@@ -1,0 +1,730 @@
+{
+  "P001": [
+    {
+      "codigo": "P002",
+      "similitud_coseno": 0.8574
+    },
+    {
+      "codigo": "P007",
+      "similitud_coseno": 0.8252
+    },
+    {
+      "codigo": "P006",
+      "similitud_coseno": 0.8249
+    }
+  ],
+  "P002": [
+    {
+      "codigo": "P001",
+      "similitud_coseno": 0.8574
+    },
+    {
+      "codigo": "P006",
+      "similitud_coseno": 0.8311
+    },
+    {
+      "codigo": "P013",
+      "similitud_coseno": 0.8255
+    }
+  ],
+  "P003": [
+    {
+      "codigo": "P004",
+      "similitud_coseno": 0.8608
+    },
+    {
+      "codigo": "P018",
+      "similitud_coseno": 0.8527
+    },
+    {
+      "codigo": "P049",
+      "similitud_coseno": 0.8101
+    }
+  ],
+  "P004": [
+    {
+      "codigo": "P003",
+      "similitud_coseno": 0.8608
+    },
+    {
+      "codigo": "P016",
+      "similitud_coseno": 0.8086
+    },
+    {
+      "codigo": "P018",
+      "similitud_coseno": 0.8013
+    }
+  ],
+  "P005": [
+    {
+      "codigo": "P021",
+      "similitud_coseno": 0.7213
+    },
+    {
+      "codigo": "P042",
+      "similitud_coseno": 0.7199
+    },
+    {
+      "codigo": "P004",
+      "similitud_coseno": 0.7132
+    }
+  ],
+  "P006": [
+    {
+      "codigo": "P002",
+      "similitud_coseno": 0.8311
+    },
+    {
+      "codigo": "P001",
+      "similitud_coseno": 0.8249
+    },
+    {
+      "codigo": "P008",
+      "similitud_coseno": 0.8199
+    }
+  ],
+  "P007": [
+    {
+      "codigo": "P001",
+      "similitud_coseno": 0.8252
+    },
+    {
+      "codigo": "P021",
+      "similitud_coseno": 0.8171
+    },
+    {
+      "codigo": "P013",
+      "similitud_coseno": 0.8137
+    }
+  ],
+  "P008": [
+    {
+      "codigo": "P006",
+      "similitud_coseno": 0.8199
+    },
+    {
+      "codigo": "P002",
+      "similitud_coseno": 0.808
+    },
+    {
+      "codigo": "P010",
+      "similitud_coseno": 0.8042
+    }
+  ],
+  "P009": [
+    {
+      "codigo": "P007",
+      "similitud_coseno": 0.8047
+    },
+    {
+      "codigo": "P013",
+      "similitud_coseno": 0.7993
+    },
+    {
+      "codigo": "P001",
+      "similitud_coseno": 0.7923
+    }
+  ],
+  "P010": [
+    {
+      "codigo": "P008",
+      "similitud_coseno": 0.8042
+    },
+    {
+      "codigo": "P006",
+      "similitud_coseno": 0.8032
+    },
+    {
+      "codigo": "P002",
+      "similitud_coseno": 0.7757
+    }
+  ],
+  "P011": [
+    {
+      "codigo": "P012",
+      "similitud_coseno": 0.8455
+    },
+    {
+      "codigo": "P013",
+      "similitud_coseno": 0.7153
+    },
+    {
+      "codigo": "P048",
+      "similitud_coseno": 0.7108
+    }
+  ],
+  "P012": [
+    {
+      "codigo": "P011",
+      "similitud_coseno": 0.8455
+    },
+    {
+      "codigo": "P013",
+      "similitud_coseno": 0.7052
+    },
+    {
+      "codigo": "P048",
+      "similitud_coseno": 0.7012
+    }
+  ],
+  "P013": [
+    {
+      "codigo": "P002",
+      "similitud_coseno": 0.8255
+    },
+    {
+      "codigo": "P001",
+      "similitud_coseno": 0.8209
+    },
+    {
+      "codigo": "P021",
+      "similitud_coseno": 0.8203
+    }
+  ],
+  "P014": [
+    {
+      "codigo": "P029",
+      "similitud_coseno": 0.7949
+    },
+    {
+      "codigo": "P031",
+      "similitud_coseno": 0.791
+    },
+    {
+      "codigo": "P015",
+      "similitud_coseno": 0.7906
+    }
+  ],
+  "P015": [
+    {
+      "codigo": "P014",
+      "similitud_coseno": 0.7906
+    },
+    {
+      "codigo": "P030",
+      "similitud_coseno": 0.7788
+    },
+    {
+      "codigo": "P031",
+      "similitud_coseno": 0.7496
+    }
+  ],
+  "P016": [
+    {
+      "codigo": "P004",
+      "similitud_coseno": 0.8086
+    },
+    {
+      "codigo": "P018",
+      "similitud_coseno": 0.7809
+    },
+    {
+      "codigo": "P025",
+      "similitud_coseno": 0.7711
+    }
+  ],
+  "P017": [
+    {
+      "codigo": "P029",
+      "similitud_coseno": 0.7515
+    },
+    {
+      "codigo": "P031",
+      "similitud_coseno": 0.7419
+    },
+    {
+      "codigo": "P027",
+      "similitud_coseno": 0.7362
+    }
+  ],
+  "P018": [
+    {
+      "codigo": "P003",
+      "similitud_coseno": 0.8527
+    },
+    {
+      "codigo": "P020",
+      "similitud_coseno": 0.806
+    },
+    {
+      "codigo": "P049",
+      "similitud_coseno": 0.8052
+    }
+  ],
+  "P019": [
+    {
+      "codigo": "P004",
+      "similitud_coseno": 0.7833
+    },
+    {
+      "codigo": "P025",
+      "similitud_coseno": 0.752
+    },
+    {
+      "codigo": "P003",
+      "similitud_coseno": 0.7508
+    }
+  ],
+  "P020": [
+    {
+      "codigo": "P018",
+      "similitud_coseno": 0.806
+    },
+    {
+      "codigo": "P003",
+      "similitud_coseno": 0.8013
+    },
+    {
+      "codigo": "P004",
+      "similitud_coseno": 0.7922
+    }
+  ],
+  "P021": [
+    {
+      "codigo": "P042",
+      "similitud_coseno": 0.8612
+    },
+    {
+      "codigo": "P041",
+      "similitud_coseno": 0.8471
+    },
+    {
+      "codigo": "P029",
+      "similitud_coseno": 0.8231
+    }
+  ],
+  "P022": [
+    {
+      "codigo": "P021",
+      "similitud_coseno": 0.8203
+    },
+    {
+      "codigo": "P029",
+      "similitud_coseno": 0.8152
+    },
+    {
+      "codigo": "P042",
+      "similitud_coseno": 0.8114
+    }
+  ],
+  "P023": [
+    {
+      "codigo": "P028",
+      "similitud_coseno": 0.7855
+    },
+    {
+      "codigo": "P030",
+      "similitud_coseno": 0.7377
+    },
+    {
+      "codigo": "P021",
+      "similitud_coseno": 0.7305
+    }
+  ],
+  "P024": [
+    {
+      "codigo": "P031",
+      "similitud_coseno": 0.7458
+    },
+    {
+      "codigo": "P035",
+      "similitud_coseno": 0.7397
+    },
+    {
+      "codigo": "P027",
+      "similitud_coseno": 0.736
+    }
+  ],
+  "P025": [
+    {
+      "codigo": "P004",
+      "similitud_coseno": 0.7933
+    },
+    {
+      "codigo": "P016",
+      "similitud_coseno": 0.7711
+    },
+    {
+      "codigo": "P037",
+      "similitud_coseno": 0.7668
+    }
+  ],
+  "P026": [
+    {
+      "codigo": "P025",
+      "similitud_coseno": 0.7656
+    },
+    {
+      "codigo": "P016",
+      "similitud_coseno": 0.7574
+    },
+    {
+      "codigo": "P004",
+      "similitud_coseno": 0.7521
+    }
+  ],
+  "P027": [
+    {
+      "codigo": "P031",
+      "similitud_coseno": 0.876
+    },
+    {
+      "codigo": "P029",
+      "similitud_coseno": 0.8571
+    },
+    {
+      "codigo": "P021",
+      "similitud_coseno": 0.8155
+    }
+  ],
+  "P028": [
+    {
+      "codigo": "P023",
+      "similitud_coseno": 0.7855
+    },
+    {
+      "codigo": "P030",
+      "similitud_coseno": 0.7563
+    },
+    {
+      "codigo": "P014",
+      "similitud_coseno": 0.7481
+    }
+  ],
+  "P029": [
+    {
+      "codigo": "P031",
+      "similitud_coseno": 0.8685
+    },
+    {
+      "codigo": "P027",
+      "similitud_coseno": 0.8571
+    },
+    {
+      "codigo": "P021",
+      "similitud_coseno": 0.8231
+    }
+  ],
+  "P030": [
+    {
+      "codigo": "P034",
+      "similitud_coseno": 0.7792
+    },
+    {
+      "codigo": "P015",
+      "similitud_coseno": 0.7788
+    },
+    {
+      "codigo": "P027",
+      "similitud_coseno": 0.7607
+    }
+  ],
+  "P031": [
+    {
+      "codigo": "P027",
+      "similitud_coseno": 0.876
+    },
+    {
+      "codigo": "P029",
+      "similitud_coseno": 0.8685
+    },
+    {
+      "codigo": "P021",
+      "similitud_coseno": 0.8062
+    }
+  ],
+  "P032": [
+    {
+      "codigo": "P004",
+      "similitud_coseno": 0.7334
+    },
+    {
+      "codigo": "P003",
+      "similitud_coseno": 0.7277
+    },
+    {
+      "codigo": "P019",
+      "similitud_coseno": 0.7238
+    }
+  ],
+  "P033": [
+    {
+      "codigo": "P040",
+      "similitud_coseno": 0.7257
+    },
+    {
+      "codigo": "P031",
+      "similitud_coseno": 0.7237
+    },
+    {
+      "codigo": "P024",
+      "similitud_coseno": 0.7215
+    }
+  ],
+  "P034": [
+    {
+      "codigo": "P030",
+      "similitud_coseno": 0.7792
+    },
+    {
+      "codigo": "P028",
+      "similitud_coseno": 0.7344
+    },
+    {
+      "codigo": "P021",
+      "similitud_coseno": 0.7329
+    }
+  ],
+  "P035": [
+    {
+      "codigo": "P018",
+      "similitud_coseno": 0.7908
+    },
+    {
+      "codigo": "P003",
+      "similitud_coseno": 0.7788
+    },
+    {
+      "codigo": "P048",
+      "similitud_coseno": 0.7663
+    }
+  ],
+  "P036": [
+    {
+      "codigo": "P021",
+      "similitud_coseno": 0.7191
+    },
+    {
+      "codigo": "P034",
+      "similitud_coseno": 0.7153
+    },
+    {
+      "codigo": "P008",
+      "similitud_coseno": 0.7129
+    }
+  ],
+  "P037": [
+    {
+      "codigo": "P025",
+      "similitud_coseno": 0.7668
+    },
+    {
+      "codigo": "P004",
+      "similitud_coseno": 0.7466
+    },
+    {
+      "codigo": "P044",
+      "similitud_coseno": 0.7407
+    }
+  ],
+  "P038": [
+    {
+      "codigo": "P025",
+      "similitud_coseno": 0.7405
+    },
+    {
+      "codigo": "P004",
+      "similitud_coseno": 0.7285
+    },
+    {
+      "codigo": "P042",
+      "similitud_coseno": 0.726
+    }
+  ],
+  "P039": [
+    {
+      "codigo": "P004",
+      "similitud_coseno": 0.7086
+    },
+    {
+      "codigo": "P019",
+      "similitud_coseno": 0.6991
+    },
+    {
+      "codigo": "P032",
+      "similitud_coseno": 0.6947
+    }
+  ],
+  "P040": [
+    {
+      "codigo": "P027",
+      "similitud_coseno": 0.7576
+    },
+    {
+      "codigo": "P031",
+      "similitud_coseno": 0.7479
+    },
+    {
+      "codigo": "P029",
+      "similitud_coseno": 0.7475
+    }
+  ],
+  "P041": [
+    {
+      "codigo": "P042",
+      "similitud_coseno": 0.8767
+    },
+    {
+      "codigo": "P021",
+      "similitud_coseno": 0.8471
+    },
+    {
+      "codigo": "P013",
+      "similitud_coseno": 0.8185
+    }
+  ],
+  "P042": [
+    {
+      "codigo": "P041",
+      "similitud_coseno": 0.8767
+    },
+    {
+      "codigo": "P021",
+      "similitud_coseno": 0.8612
+    },
+    {
+      "codigo": "P022",
+      "similitud_coseno": 0.8114
+    }
+  ],
+  "P043": [
+    {
+      "codigo": "P041",
+      "similitud_coseno": 0.8032
+    },
+    {
+      "codigo": "P042",
+      "similitud_coseno": 0.7979
+    },
+    {
+      "codigo": "P013",
+      "similitud_coseno": 0.7749
+    }
+  ],
+  "P044": [
+    {
+      "codigo": "P003",
+      "similitud_coseno": 0.7559
+    },
+    {
+      "codigo": "P004",
+      "similitud_coseno": 0.7541
+    },
+    {
+      "codigo": "P050",
+      "similitud_coseno": 0.7483
+    }
+  ],
+  "P045": [
+    {
+      "codigo": "P004",
+      "similitud_coseno": 0.7553
+    },
+    {
+      "codigo": "P025",
+      "similitud_coseno": 0.7389
+    },
+    {
+      "codigo": "P044",
+      "similitud_coseno": 0.7251
+    }
+  ],
+  "P046": [
+    {
+      "codigo": "P052",
+      "similitud_coseno": 0.8114
+    },
+    {
+      "codigo": "P042",
+      "similitud_coseno": 0.7968
+    },
+    {
+      "codigo": "P051",
+      "similitud_coseno": 0.7921
+    }
+  ],
+  "P047": [
+    {
+      "codigo": "P052",
+      "similitud_coseno": 0.7594
+    },
+    {
+      "codigo": "P046",
+      "similitud_coseno": 0.7572
+    },
+    {
+      "codigo": "P013",
+      "similitud_coseno": 0.7564
+    }
+  ],
+  "P048": [
+    {
+      "codigo": "P050",
+      "similitud_coseno": 0.8512
+    },
+    {
+      "codigo": "P049",
+      "similitud_coseno": 0.8472
+    },
+    {
+      "codigo": "P003",
+      "similitud_coseno": 0.8084
+    }
+  ],
+  "P049": [
+    {
+      "codigo": "P048",
+      "similitud_coseno": 0.8472
+    },
+    {
+      "codigo": "P050",
+      "similitud_coseno": 0.8452
+    },
+    {
+      "codigo": "P003",
+      "similitud_coseno": 0.8101
+    }
+  ],
+  "P050": [
+    {
+      "codigo": "P048",
+      "similitud_coseno": 0.8512
+    },
+    {
+      "codigo": "P049",
+      "similitud_coseno": 0.8452
+    },
+    {
+      "codigo": "P003",
+      "similitud_coseno": 0.8064
+    }
+  ],
+  "P051": [
+    {
+      "codigo": "P052",
+      "similitud_coseno": 0.8313
+    },
+    {
+      "codigo": "P046",
+      "similitud_coseno": 0.7921
+    },
+    {
+      "codigo": "P022",
+      "similitud_coseno": 0.7661
+    }
+  ],
+  "P052": [
+    {
+      "codigo": "P051",
+      "similitud_coseno": 0.8313
+    },
+    {
+      "codigo": "P046",
+      "similitud_coseno": 0.8114
+    },
+    {
+      "codigo": "P022",
+      "similitud_coseno": 0.7774
+    }
+  ]
+}
