@@ -213,6 +213,20 @@
       cabecera.textContent = outfit.titulo;
       const desc = document.createElement('p');
       desc.textContent = `${outfit.descripcion} · ${outfit.etiquetas.join(' + ')}`;
+      const razon = document.createElement('p');
+      razon.className = 'compra-motivo-color';
+      razon.textContent = outfit.motivo_color || 'Combinacion basada en categorias.';
+      const paleta = document.createElement('div');
+      paleta.className = 'compra-paleta';
+      (outfit.colores || []).forEach(color => {
+        const muestra = document.createElement('span');
+        muestra.className = 'compra-paleta-item';
+        const punto = document.createElement('span');
+        punto.className = 'compra-paleta-muestra';
+        if (/^#[0-9a-fA-F]{6}$/.test(color.hex || '')) punto.style.backgroundColor = color.hex;
+        muestra.append(punto, document.createTextNode(color.nombre || 'Color'));
+        paleta.append(muestra);
+      });
       const fotos = document.createElement('div');
       fotos.className = 'compra-fotos';
       outfit.prendas.forEach(prenda => {
@@ -228,7 +242,7 @@
         bloque.append(img, nombre);
         fotos.append(bloque);
       });
-      tarjeta.append(cabecera, desc, fotos);
+      tarjeta.append(cabecera, desc, razon, paleta, fotos);
       resultadosOutfits.append(tarjeta);
     });
   }
@@ -247,6 +261,9 @@
       if (accion === 'outfits_existente') campos.prenda_id = prendaId;
       else {
         campos.categoria = categoriaParaOutfits();
+        // Permite evaluar tambien el color de una fotografia externa sin
+        // guardarla. Las URL de tienda siguen funcionando solo por categorias.
+        if (modo === 'archivo' && archivoElegido) campos.imagen = archivoElegido;
         if (!categorias[campos.categoria]) {
           throw new Error('Selecciona una categoria valida para simular outfits con la prenda externa.');
         }

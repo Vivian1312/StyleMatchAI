@@ -28,7 +28,7 @@
       <span class="reco-titulo-icono" aria-hidden="true"><svg class="reco-ico"><use href="#reco-brillo"/></svg></span>
       <div>
         <h1>Recomendaciones de outfits</h1>
-        <p>Combina las prendas que ya tienes con reglas simples y descubre nuevas formas de vestir.</p>
+        <p>Descubre combinaciones de tus prendas con reglas de categorias, colores y variedad.</p>
       </div>
     </section>
 
@@ -102,7 +102,7 @@
           <span class="reco-result-icono" aria-hidden="true"><svg class="reco-ico"><use href="#reco-brillo"/></svg></span>
           <div>
             <h2 id="reco-titulo-outfits">Outfits sugeridos ({{ outfits|length }})</h2>
-            <p>Combinaciones creadas a partir de las categor&iacute;as de tu armario.</p>
+            <p>Looks seleccionados a partir de categorias, relaciones de color y variedad de prendas.</p>
           </div>
         </div>
 
@@ -115,6 +115,19 @@
                   <div class="reco-outfit-titulos">
                     <h3>{{ outfit.titulo }}</h3>
                     <p>{{ outfit.descripcion }}</p>
+                    {% if outfit.motivo_color %}
+                      <p class="reco-motivo-color">{{ outfit.motivo_color }}</p>
+                    {% endif %}
+                    {% if outfit.colores %}
+                      <div class="reco-colores" aria-label="Colores identificados aproximadamente">
+                        {% for color in outfit.colores %}
+                          <span class="reco-color-item" title="{{ color.nombre }}">
+                            <span class="reco-color-muestra" style="background-color:{{ color.hex }};"></span>
+                            {{ color.nombre }}
+                          </span>
+                        {% endfor %}
+                      </div>
+                    {% endif %}
                     <div class="reco-etiquetas">
                       {% for etiqueta in outfit.etiquetas %}
                         <span>{{ etiqueta }}</span>
@@ -189,8 +202,8 @@
     <aside class="reco-pie" aria-label="Informacion sobre las recomendaciones">
       <span class="reco-pie-icono" aria-hidden="true"><svg class="reco-ico"><use href="#reco-info"/></svg></span>
       <div>
-        <strong>Combinaciones basadas en reglas simples</strong>
-        <p>Solo se usan prendas de tu armario. Todav&iacute;a no se eval&uacute;an colores, ocasi&oacute;n ni compatibilidad visual.</p>
+        <strong>Combinaciones orientadas por categorias y colores</strong>
+        <p>Se usan tus prendas, relaciones de color aproximadas y reglas de categorias. No se eval&uacute;an la ocasi&oacute;n, el gusto personal ni la compatibilidad est&eacute;tica mediante un modelo entrenado.</p>
       </div>
       <a href="{% url 'mi_armario' %}">Ir a Mi armario</a>
     </aside>

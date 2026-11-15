@@ -8,6 +8,7 @@ from django.shortcuts import render
 from django.views.decorators.http import require_POST
 
 from .models import FotoArmario
+from .analisis_colores import analizar_colores_imagen
 
 logger = logging.getLogger(__name__)
 from .motor_similitud import buscar_top_3_similares
@@ -38,6 +39,9 @@ def _formatear_outfits(outfits):
             "descripcion": outfit["descripcion"],
             "etiquetas": outfit["etiquetas"],
             "prendas": prendas,
+            "motivo_color": outfit.get("motivo_color", ""),
+            "colores": outfit.get("colores", []),
+            "evaluacion_color": outfit.get("evaluacion_color", False),
         })
     return salida
 
@@ -80,7 +84,17 @@ def buscar_similares_api(request):
             categoria = (request.POST.get("categoria") or "").strip()
             if categoria not in CATEGORIAS_NOMBRES:
                 return JsonResponse({"error": "Corrige la categoria de la prenda externa antes de simular."}, status=400)
-            outfits = generar_outfits_prenda_externa(prendas, categoria, max_resultados=3)
+            archivo_externo = request.FILES.get("imagen")
+            color_externo = None
+            if archivo_externo is not None:
+                if archivo_externo.size > 10 * 1024 * 1024:
+                    return JsonResponse({"error": "La imagen supera 10 MB."}, status=400)
+                # Solo archivos subidos: no descargar URLs arbitrarias para
+                # calcular colores ni transmitir fotografias a otras APIs.
+                color_externo = analizar_colores_imagen(archivo_externo)
+            outfits = generar_outfits_prenda_externa(
+                prendas, categoria, max_resultados=3, color_externo=color_externo
+            )
             if outfits:
                 faltantes = []
             else:
