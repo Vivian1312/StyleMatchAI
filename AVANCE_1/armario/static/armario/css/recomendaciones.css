@@ -277,3 +277,9 @@ body {
   .reco-pie { flex-wrap: wrap; padding: 13px; }
   .reco-pie > a { width: 100%; }
 }
+
+/* Etapa 1: explicacion cromatica, sin alterar el header compartido. */
+.reco-motivo-color { color:#603d7f !important; font-size:12px !important; margin:0 0 8px !important; }
+.reco-colores { display:flex; flex-wrap:wrap; gap:5px 9px; margin:0 0 11px; }
+.reco-color-item { display:inline-flex; align-items:center; gap:5px; color:#684b80; font-size:11px; }
+.reco-color-muestra { width:13px; height:13px; border-radius:50%; border:1px solid #bca9ce; display:inline-block; flex-shrink:0; }

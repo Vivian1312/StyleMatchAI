@@ -134,3 +134,9 @@ h2 { font-size:21px; margin:0 0 7px; }
 .coincidencia-card .boton-outfit:hover:not(:disabled) {background:#e6d2ff}
 .coincidencia-card .boton-outfit:disabled {opacity:.65;cursor:wait}
 @media(max-width:660px) {.compra-acciones {grid-template-columns:1fr}.compra-foto {width:82px}.compra-foto > img{height:82px}}
+
+/* Etapa 1: explicacion y muestras cromaticas bajo cada look. */
+.compra-outfit .compra-motivo-color { color:#603d7f; margin:0 0 8px; font-size:12px; }
+.compra-paleta { display:flex; flex-wrap:wrap; gap:7px 12px; margin:0 0 12px; }
+.compra-paleta-item { display:inline-flex; gap:5px; align-items:center; color:#6a507d; font-size:11px; }
+.compra-paleta-muestra { width:14px; height:14px; display:inline-block; border-radius:50%; border:1px solid #bea9d6; flex-shrink:0; }
